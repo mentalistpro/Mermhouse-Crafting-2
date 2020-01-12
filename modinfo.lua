@@ -1,4 +1,4 @@
-name 					= "[BETA] Mermhouse Crafting"
+name 					= "[TEST] Mermhouse Crafting"
 author 					= "Alberto Pietralunga and mentalistpro"
 version 				= "2.0"
 description				= "Crafting merm house structures."
