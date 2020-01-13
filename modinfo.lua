@@ -1,20 +1,19 @@
-name 					= "[TEST] Mermhouse Crafting"
-author 					= "Alberto Pietralunga and mentalistpro"
-version 				= "2.0"
-description				= "Crafting merm house structures."
-forumthread 			= ""
-api_version 			= 6
+name 						= "Mermhouses Crafting"
+author 						= "Alberto Pietralunga and mentalistpro"
+version 					= "1.3.5"
+description					= "Crafting merm house structures."
+forumthread 				= ""
+api_version 				= 6
 
 dont_starve_compatible 		= true
 reign_of_giants_compatible 	= true
 shipwrecked_compatible		= true
 hamlet_compatible			= true
 
-icon_atlas 				= "modicon.xml"
-icon 					= "modicon.tex"
+icon_atlas 					= "modicon.xml"
+icon 						= "modicon.tex"
 
-------------------------------------------------------------------------------------------
---Pre-config
+
 local function simpleopt(x)
 	return {description = x, data = x}
 end
@@ -38,11 +37,9 @@ local function range(a, b, step)
 	return opts
 end
 
-------------------------------------------------------------------------------------------
---Config
 configuration_options = {
 	{
-    	name = "__Mermhouse__",
+    	name = "Mermhouse",
 		label = "Mermhouse",
 		default = "true",
 		options = { {description = "-------", data = "true"} }
@@ -77,7 +74,7 @@ configuration_options = {
 		},
 		
 	{
-		name = "__Fishermerm's hut__",
+		name = "Fishermerm's hut",
 		label = "Fishermerm's hut",
 		default = "true",
 		options = { {description = "-------", data = "true"} }
@@ -106,7 +103,7 @@ configuration_options = {
 		},
 		
 	{
-		name = "__Craftsmerm House__",
+		name = "Craftsmerm House",
 		label = "Craftsmerm House",
 		default = "true",
 		options = { {description = "-------", data = "true"} }
