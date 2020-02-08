@@ -11,9 +11,6 @@ local TECH = _G.TECH
 PrefabFiles = 
 {
 	"mermhouse"
-	if not (IsDLCEnabled(2) or IsDLCEnabled(3)) then --not replace existing mermfisher prefab in DLC0002/DLC0003
-		--"mermfisher"
-	end
 }
 
 Assets = 
@@ -23,19 +20,31 @@ Assets =
 	Asset("ATLAS", "images/inventoryimages/mermhouse_crafted.xml"),
 	Asset("ATLAS", "minimap/mermhouse.xml"),
 	Asset("ATLAS", "minimap/mermhouse_tropical.xml"),
-	Asset("ATLAS", "minimap/mermhouse_crafted.xml"),
 	Asset("ATLAS", "minimap/mermhouse_fisher.xml"),
+	Asset("ATLAS", "minimap/mermhouse_crafted.xml")
 }
 
 AddMinimapAtlas("minimap/mermhouse.xml")
 AddMinimapAtlas("minimap/mermhouse_tropical.xml")
-AddMinimapAtlas("minimap/mermhouse_crafted.xml")
 AddMinimapAtlas("minimap/mermhouse_fisher.xml")
-
-if IsDLCEnabled(2) then	fish_type = "tropical_fish" else fish_type = "fish" end
+AddMinimapAtlas("minimap/mermhouse_crafted.xml")
 
 ------------------------------------------------------------------------------------------------------------------------------
---Recipe
+--
+
+--//CONTENT//
+--#1 Config
+--#2 Recipe
+--#3 Strings
+
+------------------------------------------------------------------------------------------------------------------------------
+--#1 Config
+
+--Wurt related
+--ingredients and merm spawn no/rate
+
+------------------------------------------------------------------------------------------------------------------------------
+--#2 Recipe
 
 local mermhouse = Recipe(
 	"mermhouse", 
@@ -84,7 +93,7 @@ local mermhouse_fisher = Recipe(
 	end
 
 ----------------------------------------------------------------------------------------------------------------------------
---Strings
+--#3 Strings
 
 if _S.CHARACTERS.WALANI == nil then _S.CHARACTERS.WALANI = { DESCRIBE = {},} end -- DLC002
 if _S.CHARACTERS.WARBUCKS == nil then _S.CHARACTERS.WARBUCKS = { DESCRIBE = {},} end -- DLC003
