@@ -95,7 +95,7 @@ if IsDLCEnabled(2) or IsDLCEnabled(3) then
 		mermhouse_ham.atlas = mermhouse_atlas
 
 else
-	local mermhouse_ham = Recipe(
+	local mermhouse = Recipe(
 		"mermhouse", 
 		{
 		Ingredient("boards", 4), 
