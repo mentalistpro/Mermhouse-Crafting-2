@@ -58,7 +58,7 @@ TUNING.MOD_MERMWATCHTOWER_MINIMAP = GetModConfigData("w_icon")
 local x = {"fish", "tropical_fish"}
 local y = {"rog", "shipwrecked", "porkland", "common"}
 local z = {"mermhouse_placer", "mermhouse_tropical_placer"}
-local mermhouse.atlas = "images/inventoryimages/mermhouse.xml"
+local mermhouse_atlas = "images/inventoryimages/mermhouse.xml"
 
 if IsDLCEnabled(2) or IsDLCEnabled(3) then
 	local mermhouse_rog = Recipe(
@@ -70,7 +70,7 @@ if IsDLCEnabled(2) or IsDLCEnabled(3) then
 		},
 		RECIPETABS.TOWN, TECH.SCIENCE_ONE,
 		y[1], z[1])
-		mermhouse_rog.atlas = mermhouse.atlas
+		mermhouse_rog.atlas = mermhouse_atlas
 		
 	local mermhouse_sw = Recipe(
 		"mermhouse", 
@@ -81,7 +81,7 @@ if IsDLCEnabled(2) or IsDLCEnabled(3) then
 		},
 		RECIPETABS.TOWN, TECH.SCIENCE_ONE,
 		y[2], z[2])
-		mermhouse_sw.atlas = mermhouse.atlas
+		mermhouse_sw.atlas = mermhouse_atlas
 
 	local mermhouse_ham = Recipe(
 		"mermhouse", 
@@ -92,7 +92,7 @@ if IsDLCEnabled(2) or IsDLCEnabled(3) then
 		},
 		RECIPETABS.TOWN, TECH.SCIENCE_ONE,
 		y[3], z[2])
-		mermhouse_ham.atlas = mermhouse.atlas
+		mermhouse_ham.atlas = mermhouse_atlas
 
 else
 	local mermhouse_ham = Recipe(
@@ -104,7 +104,7 @@ else
 		},
 		RECIPETABS.TOWN, TECH.SCIENCE_ONE, 
 		z[1])
-		mermhouse.atlas = mermhouse.atlas
+		mermhouse.atlas = mermhouse_atlas
 end
 		
 --//Fishermerm's Hut//
