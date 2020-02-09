@@ -1,0 +1,6 @@
+﻿<Atlas>
+	<Texture filename="mermwatchtower.tex" />
+	<Elements>
+		<Element name="mermwatchtower.tex" u1="0.001" u2="0.999" v2="0.999" v1="0.001" variant="" />
+	</Elements>
+</Atlas>

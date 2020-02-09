@@ -18,23 +18,25 @@ Assets =
 	Asset("ATLAS", "images/inventoryimages/mermhouse.xml"),
     Asset("ATLAS", "images/inventoryimages/mermhouse_fisher.xml"),
 	Asset("ATLAS", "images/inventoryimages/mermhouse_crafted.xml"),
+	Asset("ATLAS", "images/inventoryimages/mermwatchtower.xml"),
 	Asset("ATLAS", "minimap/mermhouse.xml"),
 	Asset("ATLAS", "minimap/mermhouse_tropical.xml"),
 	Asset("ATLAS", "minimap/mermhouse_fisher.xml"),
-	Asset("ATLAS", "minimap/mermhouse_crafted.xml")
+	Asset("ATLAS", "minimap/mermhouse_crafted.xml"),
+	Asset("ATLAS", "minimap/mermwatchtower.xml")
 }
 
 AddMinimapAtlas("minimap/mermhouse.xml")
 AddMinimapAtlas("minimap/mermhouse_tropical.xml")
 AddMinimapAtlas("minimap/mermhouse_fisher.xml")
 AddMinimapAtlas("minimap/mermhouse_crafted.xml")
+AddMinimapAtlas("minimap/mermwatchtower.xml")
 
 ------------------------------------------------------------------------------------------------------------------------------
---
 
 --//CONTENT//
 --#1 Config
---#2 Recipe
+--#2 Recipes
 --#3 Strings
 
 ------------------------------------------------------------------------------------------------------------------------------
@@ -43,54 +45,153 @@ AddMinimapAtlas("minimap/mermhouse_crafted.xml")
 --Wurt related
 --ingredients and merm spawn no/rate
 
-------------------------------------------------------------------------------------------------------------------------------
---#2 Recipe
+TUNING.MOD_MERMHOUSE_MINIMAP = GetModConfigData("m_icon")
+TUNING.MOD_MERMHOUSE_FISHER_MINIMAP = GetModConfigData("f_icon")
+TUNING.MOD_MERMHOUSE_CRAFTED_MINIMAP = GetModConfigData("c_icon")
+TUNING.MOD_MERMWATCHTOWER_MINIMAP = GetModConfigData("w_icon")
 
-local mermhouse = Recipe(
-	"mermhouse", 
-	{
-	Ingredient("boards", GetModConfigData("boards_m")), 
-	Ingredient("rocks", GetModConfigData("rocks_m")), 
-	Ingredient(fish_type, GetModConfigData("fish_m")*2),
-	},
-	RECIPETABS.TOWN, 
-	TECH.SCIENCE_ONE)
-	mermhouse.placer = "mermhouse_placer"
-	mermhouse.atlas = "images/inventoryimages/mermhouse.xml"
-	if IsDLCEnabled(2) or IsDLCEnabled(3) then
-		mermhouse.game_type = "common"
-	end
+------------------------------------------------------------------------------------------------------------------------------
+--#2 Recipes
+
+--//Mermhouse//
 	
-local mermhouse_crafted = Recipe(
-	"mermhouse_crafted", 
-	{
-	Ingredient("boards", GetModConfigData("boards_c")), 
-	Ingredient("cutreeds", GetModConfigData("cutreeds_c")), 
-	Ingredient(fish_type, GetModConfigData("fish_c")),
-	},
-	RECIPETABS.TOWN, 
-	TECH.SCIENCE_ONE)
-	mermhouse_crafted.placer = "mermhouse_crafted_placer"
-	mermhouse_crafted.atlas = "images/inventoryimages/mermhouse_crafted.xml"
-	if IsDLCEnabled(2) or IsDLCEnabled(3) then
-		mermhouse_crafted.game_type = "common"
-	end
-	
-local mermhouse_fisher = Recipe(
-	"mermhouse_fisher", 
-	{
-	Ingredient("boards", GetModConfigData("boards_f")), 
-	Ingredient("rocks", GetModConfigData("rocks_f")), 
-	Ingredient(fish_type, GetModConfigData("fish_f")),
-	},
-	RECIPETABS.TOWN, 
-	TECH.SCIENCE_ONE,
-	RECIPE_GAME_TYPE.COMMON)
-	mermhouse_fisher.placer = "mermhouse_fisher_placer"
-	mermhouse_fisher.atlas = "images/inventoryimages/mermhouse_fisher.xml"
-	if IsDLCEnabled(2) or IsDLCEnabled(3) then
-		mermhouse_crafted.game_type = "common"
-	end
+local x = {"fish", "tropical_fish"}
+local y = {"rog", "shipwrecked", "porkland", "common"}
+local z = {"mermhouse_placer", "mermhouse_tropical_placer"}
+local mermhouse.atlas = "images/inventoryimages/mermhouse.xml"
+
+if IsDLCEnabled(2) or IsDLCEnabled(3) then
+	local mermhouse_rog = Recipe(
+		"mermhouse", 
+		{
+		Ingredient("boards", 4), 
+		Ingredient("rocks", 9), 
+		Ingredient(x[1], 8)
+		},
+		RECIPETABS.TOWN, TECH.SCIENCE_ONE,
+		y[1], z[1])
+		mermhouse_rog.atlas = mermhouse.atlas
+		
+	local mermhouse_sw = Recipe(
+		"mermhouse", 
+		{
+		Ingredient("boards", 4), 
+		Ingredient("rocks", 9), 
+		Ingredient(x[2], 8)
+		},
+		RECIPETABS.TOWN, TECH.SCIENCE_ONE,
+		y[2], z[2])
+		mermhouse_sw.atlas = mermhouse.atlas
+
+	local mermhouse_ham = Recipe(
+		"mermhouse", 
+		{
+		Ingredient("boards", 4), 
+		Ingredient("rocks", 9), 
+		Ingredient(x[1], 8)
+		},
+		RECIPETABS.TOWN, TECH.SCIENCE_ONE,
+		y[3], z[2])
+		mermhouse_ham.atlas = mermhouse.atlas
+
+else
+	local mermhouse_ham = Recipe(
+		"mermhouse", 
+		{
+		Ingredient("boards", 4), 
+		Ingredient("rocks", 9), 
+		Ingredient(x[1], 8)
+		},
+		RECIPETABS.TOWN, TECH.SCIENCE_ONE, 
+		z[1])
+		mermhouse.atlas = mermhouse.atlas
+end
+		
+--//Fishermerm's Hut//
+
+	--[[local mermhouse_fisher = Recipe(
+		"mermhouse_fisher", 
+		{
+		Ingredient("boards", 4), 
+		Ingredient("rocks", 9), 
+		Ingredient("fish", 8),
+		Ingredient("fishingrod",2)
+		},
+		RECIPETABS.TOWN, 
+		TECH.SCIENCE_ONE)
+
+		mermhouse_fisher.placer = "mermhouse_fisher_placer"
+		mermhouse_fisher.atlas = "images/inventoryimages/mermhouse_fisher.xml"
+		if IsDLCEnabled(3) then
+			mermhouse_fisher.game_type = "hamlet" 
+		elseif IsDLCEnabled(2) then
+			mermhouse_fisher.game_type = "rog"
+		end
+
+	local mermhouse_fisher_sw = Recipe(
+		"mermhouse_fisher", 
+		{
+		Ingredient("boards", 4), 
+		Ingredient("rocks", 9), 
+		Ingredient("tropical_fish", 8),
+		Ingredient("fishingrod",2)
+		},
+		RECIPETABS.TOWN, 
+		TECH.SCIENCE_ONE,
+		"shipwrecked",
+		"mermhouse_fisher_placer",
+		"images/inventoryimages/mermhouse_fisher.xml")
+
+	--//Craftsmerm House//
+
+	local mermhouse_crafted = Recipe(
+		"mermhouse_crafted", 
+		{
+		Ingredient("boards", 4), 
+		Ingredient("cutreeds", 6), 
+		Ingredient("fish", 4)
+		},
+		RECIPETABS.TOWN, 
+		TECH.SCIENCE_ONE)
+		
+		mermhouse_crafted.placer = "mermhouse_crafted_placer"
+		mermhouse_crafted.atlas = "images/inventoryimages/mermhouse_crafted.xml"	
+		if IsDLCEnabled(3) then
+			mermhouse_crafted.game_type = "hamlet" 
+		elseif IsDLCEnabled(2) then
+			mermhouse_crafted.game_type = "rog"
+		end
+
+	local mermhouse_crafted_sw = Recipe(
+		"mermhouse_crafted", 
+		{
+		Ingredient("boards", 4), 
+		Ingredient("cutreeds", 6), 
+		Ingredient("tropical_fish", 4)
+		},
+		RECIPETABS.TOWN, 
+		TECH.SCIENCE_ONE,
+		"shipwrecked",
+		"mermhouse_crafted_placer",
+		"images/inventoryimages/mermhouse_crafted.xml")]]
+
+	--//Merm Flort-ifications//
+
+	local mermwatchtower = Recipe(
+		"mermwatchtower", 
+		{
+		Ingredient("boards", 5), 
+		Ingredient("tentaclespots", 2), 
+		Ingredient("spear", 4)
+		},
+		RECIPETABS.TOWN, 
+		TECH.SCIENCE_ONE)
+		
+		mermwatchtower.placer = "mermwatchtower_placer"
+		mermwatchtower.atlas = "images/inventoryimages/mermwatchtower.xml"
+		if IsDLCEnabled(3) or IsDLCEnabled(2) then
+			mermwatchtower.game_type = "common" 
+		end
 
 ----------------------------------------------------------------------------------------------------------------------------
 --#3 Strings
@@ -108,38 +209,18 @@ if _S.CHARACTERS.WORMWOOD == nil then _S.CHARACTERS.WORMWOOD = { DESCRIBE = {},}
 if _S.CHARACTERS.WORTOX == nil then _S.CHARACTERS.WORTOX = { DESCRIBE = {},} end -- DST
 if _S.CHARACTERS.WURT == nil then _S.CHARACTERS.WURT = { DESCRIBE = {},} end -- DST
 
---Mermhouse
-local IsVan = not (IsDLCEnabled(2) or IsDLCEnabled(3)) and not PrefabExists("acorn")
-local IsRog = PrefabExists("acorn")
+--//Mermhouse//
+local IsSurvivalGameMode = not PrefabExists("volcano") and not PrefabExists("pig_palace")
 
-if IsVan or IsRog then 
+if IsSurvivalGameMode then 
 	_S.NAMES.MERMHOUSE = "Mermhouse" 
 else 
 	_S.NAMES.MERMHOUSE = "Merm Hut" 
 end
 _S.RECIPE_DESC.MERMHOUSE = "A crowded domicile for mermaid men."
 
---Mermhouse_crafted
-_S.NAMES.MERMHOUSE_CRAFTED = "Craftsmerm House"
-_S.RECIPE_DESC.MERMHOUSE_CRAFTED = "A home fit for a Merm."
+--//Fishermerm's Hut//
 
-_S.CHARACTERS.GENERIC.DESCRIBE.MERMHOUSE_CRAFTED = {"It's actually kind of cute."}
-_S.CHARACTERS.WARLY.DESCRIBE.MERMHOUSE_CRAFTED = {"Oh! It looks... very nice!"}
-_S.CHARACTERS.WATHGRITHR.DESCRIBE.MERMHOUSE_CRAFTED = {"A home fit for a fish beast."}
-_S.CHARACTERS.WAXWELL.DESCRIBE.MERMHOUSE_CRAFTED = {"It's slightly less offensive to my eyes than the others."}
-_S.CHARACTERS.WEBBER.DESCRIBE.MERMHOUSE_CRAFTED = {"What a funny little house."}
-_S.CHARACTERS.WENDY.DESCRIBE.MERMHOUSE_CRAFTED = {"It has not yet been touched by the ravages of time."}
-_S.CHARACTERS.WICKERBOTTOM.DESCRIBE.MERMHOUSE_CRAFTED = {"It's good to see her doing something constructive."}
-_S.CHARACTERS.WILLOW.DESCRIBE.MERMHOUSE_CRAFTED = {"Looks just as flammable as the old ones."}
-_S.CHARACTERS.WINONA.DESCRIBE.MERMHOUSE_CRAFTED = {"Hm, I should teach that kid how to use a level."}
-_S.CHARACTERS.WOLFGANG.DESCRIBE.MERMHOUSE_CRAFTED = {"Is house for fish men!"}
-_S.CHARACTERS.WOODIE.DESCRIBE.MERMHOUSE_CRAFTED = {"Reminds me of the first house we built, eh Lucy?"}
-_S.CHARACTERS.WORMWOOD.DESCRIBE.MERMHOUSE_CRAFTED = {"Glub Glub house"}
-_S.CHARACTERS.WORTOX.DESCRIBE.MERMHOUSE_CRAFTED = {"An abode fit for a toad, hyuyu!"}
-_S.CHARACTERS.WURT.DESCRIBE.MERMHOUSE_CRAFTED = {"Made it with own claws!"}
-_S.CHARACTERS.WX78.DESCRIBE.MERMHOUSE_CRAFTED = {"IT IS UGLY"}
-
---Mermhouse_fisher
 _S.NAMES.MERMHOUSE_FISHER = "Fishermerm's Hut"
 _S.RECIPE_DESC.MERMHOUSE_FISHER = "A dwelling for fish mongers."
 
@@ -163,3 +244,29 @@ _S.CHARACTERS.WORMWOOD.DESCRIBE.MERMHOUSE_FISHER = {"Glub Glub Man home"}
 _S.CHARACTERS.WORTOX.DESCRIBE.MERMHOUSE_FISHER = {"A stinky structure, to be sure."}
 _S.CHARACTERS.WURT.DESCRIBE.MERMHOUSE_FISHER = {"Home is where the swamp is, flort."}
 _S.CHARACTERS.WX78.DESCRIBE.MERMHOUSE_FISHER = {"OUTDATED ABODE"}
+
+--//Craftsmerm House//
+
+_S.NAMES.MERMHOUSE_CRAFTED = "Craftsmerm House"
+_S.RECIPE_DESC.MERMHOUSE_CRAFTED = "A home fit for a Merm."
+
+_S.CHARACTERS.GENERIC.DESCRIBE.MERMHOUSE_CRAFTED = {"It's actually kind of cute."}
+_S.CHARACTERS.WARLY.DESCRIBE.MERMHOUSE_CRAFTED = {"Oh! It looks... very nice!"}
+_S.CHARACTERS.WATHGRITHR.DESCRIBE.MERMHOUSE_CRAFTED = {"A home fit for a fish beast."}
+_S.CHARACTERS.WAXWELL.DESCRIBE.MERMHOUSE_CRAFTED = {"It's slightly less offensive to my eyes than the others."}
+_S.CHARACTERS.WEBBER.DESCRIBE.MERMHOUSE_CRAFTED = {"What a funny little house."}
+_S.CHARACTERS.WENDY.DESCRIBE.MERMHOUSE_CRAFTED = {"It has not yet been touched by the ravages of time."}
+_S.CHARACTERS.WICKERBOTTOM.DESCRIBE.MERMHOUSE_CRAFTED = {"It's good to see her doing something constructive."}
+_S.CHARACTERS.WILLOW.DESCRIBE.MERMHOUSE_CRAFTED = {"Looks just as flammable as the old ones."}
+_S.CHARACTERS.WINONA.DESCRIBE.MERMHOUSE_CRAFTED = {"Hm, I should teach that kid how to use a level."}
+_S.CHARACTERS.WOLFGANG.DESCRIBE.MERMHOUSE_CRAFTED = {"Is house for fish men!"}
+_S.CHARACTERS.WOODIE.DESCRIBE.MERMHOUSE_CRAFTED = {"Reminds me of the first house we built, eh Lucy?"}
+_S.CHARACTERS.WORMWOOD.DESCRIBE.MERMHOUSE_CRAFTED = {"Glub Glub house"}
+_S.CHARACTERS.WORTOX.DESCRIBE.MERMHOUSE_CRAFTED = {"An abode fit for a toad, hyuyu!"}
+_S.CHARACTERS.WURT.DESCRIBE.MERMHOUSE_CRAFTED = {"Made it with own claws!"}
+_S.CHARACTERS.WX78.DESCRIBE.MERMHOUSE_CRAFTED = {"IT IS UGLY"}
+
+--//Merm Flort-ificationss//
+
+_S.NAMES.MERMWATCHTOWER = "Merm Flort-ifications"
+_S.RECIPE_DESC.MERMWATCHTOWER = "."
