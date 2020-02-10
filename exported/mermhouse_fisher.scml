@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="b5">
+	<folder id="0" name="symbol_fe8b4de0">
+		<file id="0" name="symbol_fe8b4de0/symbol_fe8b4de0-0.png" width="724" height="1100" pivot_x="0.461567" pivot_y="0.0520686" />
+		<file id="1" name="symbol_fe8b4de0/symbol_fe8b4de0-1.png" width="680" height="1116" pivot_x="0.47136" pivot_y="0.0759861" />
+	</folder>
+	<entity id="0" name="merm_fisherman_house">
+		<animation id="0" name="burnt" length="67">
+			<mainline>
+				<key id="0" time="0">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.47136" abs_pivot_y="0.0759861" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="1" />
+				</key>
+				<key id="1" time="34">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.47136" abs_pivot_y="0.0759861" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="1" z_index="1" />
+				</key>
+				<key id="2" time="67">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.47136" abs_pivot_y="0.0759861" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="2" z_index="1" />
+				</key>
+			</mainline>
+			<timeline id="0" name="house">
+				<key id="0" time="0" spin="1">
+					<object folder="0" file="1" x="-1.599" y="-31.85" scale_x="1" scale_y="1" angle="0" />
+				</key>
+				<key id="1" time="34" spin="1">
+					<object folder="0" file="1" x="-1.599" y="-31.85" scale_x="1" scale_y="1" angle="0" />
+				</key>
+				<key id="2" time="67" spin="1">
+					<object folder="0" file="1" x="-1.599" y="-31.85" scale_x="1" scale_y="1" angle="0" />
+				</key>
+			</timeline>
+		</animation>
+		<animation id="1" name="hit" length="367">
+			<mainline>
+				<key id="0" time="0">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.461567" abs_pivot_y="0.0520686" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="1" />
+				</key>
+				<key id="1" time="34">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.461567" abs_pivot_y="0.0520686" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="1" z_index="1" />
+				</key>
+				<key id="2" time="67">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.461567" abs_pivot_y="0.0520686" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="2" z_index="1" />
+				</key>
+				<key id="3" time="100">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.461567" abs_pivot_y="0.0520686" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="3" z_index="1" />
+				</key>
+				<key id="4" time="134">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.461567" abs_pivot_y="0.0520686" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="4" z_index="1" />
+				</key>
+				<key id="5" time="167">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.461567" abs_pivot_y="0.0520686" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="5" z_index="1" />
+				</key>
+				<key id="6" time="200">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.461567" abs_pivot_y="0.0520686" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="6" z_index="1" />
+				</key>
+				<key id="7" time="234">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.461567" abs_pivot_y="0.0520686" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="7" z_index="1" />
+				</key>
+				<key id="8" time="267">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.461567" abs_pivot_y="0.0520686" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="8" z_index="1" />
+				</key>
+				<key id="9" time="300">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.461567" abs_pivot_y="0.0520686" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="9" z_index="1" />
+				</key>
+				<key id="10" time="334">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.461567" abs_pivot_y="0.0520686" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="10" z_index="1" />
+				</key>
+				<key id="11" time="367">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.461567" abs_pivot_y="0.0520686" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="11" z_index="1" />
+				</key>
+			</mainline>
+			<timeline id="0" name="house">
+				<key id="0" time="0" spin="1">
+					<object folder="0" file="0" x="-1.599" y="-31.85" scale_x="1" scale_y="1.00008" angle="0.37023" />
+				</key>
+				<key id="1" time="34" spin="-1">
+					<object folder="0" file="0" x="-1.599" y="-31.85" scale_x="1" scale_y="1.00008" angle="0.00655648" />
+				</key>
+				<key id="2" time="67" spin="-1">
+					<object folder="0" file="0" x="-1.599" y="-31.85" scale_x="1" scale_y="1.00006" angle="359.682" />
+				</key>
+				<key id="3" time="100" spin="1">
+					<object folder="0" file="0" x="-1.549" y="-31.85" scale_x="1" scale_y="1.00009" angle="0.0196691" />
+				</key>
+				<key id="4" time="134" spin="1">
+					<object folder="0" file="0" x="-1.599" y="-31.85" scale_x="1" scale_y="1.00014" angle="0.475556" />
+				</key>
+				<key id="5" time="167" spin="-1">
+					<object folder="0" file="0" x="-1.599" y="-31.85" scale_x="1" scale_y="1.00006" angle="0.270136" />
+				</key>
+				<key id="6" time="200" spin="-1">
+					<object folder="0" file="0" x="-1.549" y="-31.85" scale_x="1" scale_y="1.00004" angle="0.146434" />
+				</key>
+				<key id="7" time="234" spin="-1">
+					<object folder="0" file="0" x="-1.599" y="-31.85" scale_x="1" scale_y="1.00002" angle="0.0297245" />
+				</key>
+				<key id="8" time="267" spin="-1">
+					<object folder="0" file="0" x="-1.549" y="-31.85" scale_x="1" scale_y="1" angle="0.013114" />
+				</key>
+				<key id="9" time="300" spin="-1">
+					<object folder="0" file="0" x="-1.549" y="-31.85" scale_x="1" scale_y="1" angle="0.00349706" />
+				</key>
+				<key id="10" time="334" spin="-1">
+					<object folder="0" file="0" x="-1.599" y="-31.85" scale_x="1" scale_y="1" angle="0" />
+				</key>
+				<key id="11" time="367" spin="1">
+					<object folder="0" file="0" x="-1.599" y="-31.85" scale_x="1" scale_y="1" angle="0" />
+				</key>
+			</timeline>
+		</animation>
+		<animation id="2" name="idle" length="67">
+			<mainline>
+				<key id="0" time="0">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.461567" abs_pivot_y="0.0520686" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="0" z_index="1" />
+				</key>
+				<key id="1" time="34">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.461567" abs_pivot_y="0.0520686" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="1" z_index="1" />
+				</key>
+				<key id="2" time="67">
+					<object_ref id="0" name="house" abs_x="0" abs_y="0" abs_pivot_x="0.461567" abs_pivot_y="0.0520686" abs_angle="0" abs_scale_x="1" abs_scale_y="1" abs_a="1" timeline="0" key="2" z_index="1" />
+				</key>
+			</mainline>
+			<timeline id="0" name="house">
+				<key id="0" time="0" spin="1">
+					<object folder="0" file="0" x="-1.599" y="-31.85" scale_x="1" scale_y="1" angle="0" />
+				</key>
+				<key id="1" time="34" spin="1">
+					<object folder="0" file="0" x="-1.599" y="-31.85" scale_x="1" scale_y="1" angle="0" />
+				</key>
+				<key id="2" time="67" spin="1">
+					<object folder="0" file="0" x="-1.599" y="-31.85" scale_x="1" scale_y="1" angle="0" />
+				</key>
+			</timeline>
+		</animation>
+	</entity>
+</spriter_data>

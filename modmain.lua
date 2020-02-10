@@ -270,20 +270,20 @@ _S.CHARACTERS.WX78.DESCRIBE.MERMHOUSE_CRAFTED = {"IT IS UGLY"}
 --//Merm Flort-ificationss//
 
 _S.NAMES.MERMWATCHTOWER = "Merm Flort-ifications"
-_S.RECIPE_DESC.MERMWATCHTOWER = "."
+_S.RECIPE_DESC.MERMWATCHTOWER = "True warriors live within."
 
-_S.CHARACTERS.GENERIC.DESCRIBE.MERMWATCHTOWER = {"It's actually kind of cute."}
-_S.CHARACTERS.WARLY.DESCRIBE.MERMWATCHTOWER = {"Oh! It looks... very nice!"}
-_S.CHARACTERS.WATHGRITHR.DESCRIBE.MERMWATCHTOWER = {"A home fit for a fish beast."}
-_S.CHARACTERS.WAXWELL.DESCRIBE.MERMWATCHTOWER = {"It's slightly less offensive to my eyes than the others."}
-_S.CHARACTERS.WEBBER.DESCRIBE.MERMWATCHTOWER = {"What a funny little house."}
-_S.CHARACTERS.WENDY.DESCRIBE.MERMWATCHTOWER = {"It has not yet been touched by the ravages of time."}
-_S.CHARACTERS.WICKERBOTTOM.DESCRIBE.MERMWATCHTOWER = {"It's good to see her doing something constructive."}
-_S.CHARACTERS.WILLOW.DESCRIBE.MERMWATCHTOWER = {"Looks just as flammable as the old ones."}
-_S.CHARACTERS.WINONA.DESCRIBE.MERMWATCHTOWER = {"Hm, I should teach that kid how to use a level."}
-_S.CHARACTERS.WOLFGANG.DESCRIBE.MERMWATCHTOWER = {"Is house for fish men!"}
-_S.CHARACTERS.WOODIE.DESCRIBE.MERMWATCHTOWER = {"Reminds me of the first house we built, eh Lucy?"}
-_S.CHARACTERS.WORMWOOD.DESCRIBE.MERMWATCHTOWER = {"Glub Glub house"}
-_S.CHARACTERS.WORTOX.DESCRIBE.MERMWATCHTOWER = {"An abode fit for a toad, hyuyu!"}
-_S.CHARACTERS.WURT.DESCRIBE.MERMWATCHTOWER = {"Made it with own claws!"}
-_S.CHARACTERS.WX78.DESCRIBE.MERMWATCHTOWER = {"IT IS UGLY"}
+_S.CHARACTERS.GENERIC.DESCRIBE.MERMWATCHTOWER = {"A royal guard with no Royal to guard."}
+_S.CHARACTERS.WARLY.DESCRIBE.MERMWATCHTOWER = {"They don't look so friendly now..."}
+_S.CHARACTERS.WATHGRITHR.DESCRIBE.MERMWATCHTOWER = {"They are lost without their chieftain."}
+_S.CHARACTERS.WAXWELL.DESCRIBE.MERMWATCHTOWER = {"A kingdom without a king."}
+_S.CHARACTERS.WEBBER.DESCRIBE.MERMWATCHTOWER = {"We better not get too close..."}
+_S.CHARACTERS.WENDY.DESCRIBE.MERMWATCHTOWER = {"They fight without purpose..."}
+_S.CHARACTERS.WICKERBOTTOM.DESCRIBE.MERMWATCHTOWER = {"A crude, but effective fortification."}
+_S.CHARACTERS.WILLOW.DESCRIBE.MERMWATCHTOWER = {"I bet that would catch fire reeeal easy."}
+_S.CHARACTERS.WINONA.DESCRIBE.MERMWATCHTOWER = {"It looks kinda gloomy."}
+_S.CHARACTERS.WOLFGANG.DESCRIBE.MERMWATCHTOWER = {"Is tree full of fish!"}
+_S.CHARACTERS.WOODIE.DESCRIBE.MERMWATCHTOWER = {"Feels like they're waiting for something."}
+_S.CHARACTERS.WORMWOOD.DESCRIBE.MERMWATCHTOWER = {"Glub Glubs inside"}
+_S.CHARACTERS.WORTOX.DESCRIBE.MERMWATCHTOWER = {"Guards with no king, like puppets with no string."}
+_S.CHARACTERS.WURT.DESCRIBE.MERMWATCHTOWER = {"Royal guard need King to protect..."}
+_S.CHARACTERS.WX78.DESCRIBE.MERMWATCHTOWER = {"STATUS: INACTIVE"}
