@@ -4,6 +4,7 @@ local assets =
     Asset("ANIM", "anim/mermhouse_tropical.zip"),
 	Asset("ANIM", "anim/mermhouse_fisher.zip"),
 	Asset("ANIM", "anim/mermhouse_crafted.zip"),
+	--Asset("ANIM", "anim/mermhouse_fisher_crafted.zip"),
 	Asset("ANIM", "anim/mermwatchtower.zip")
 }
 
