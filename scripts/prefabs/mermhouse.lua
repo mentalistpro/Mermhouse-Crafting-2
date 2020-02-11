@@ -4,7 +4,7 @@ local assets =
     Asset("ANIM", "anim/mermhouse_tropical.zip"),
 	Asset("ANIM", "anim/mermhouse_fisher.zip"),
 	Asset("ANIM", "anim/mermhouse_crafted.zip"),
-	--Asset("ANIM", "anim/mermhouse_fisher_crafted.zip"),
+	Asset("ANIM", "anim/mermhouse_crafted_fisher.zip"),
 	Asset("ANIM", "anim/mermwatchtower.zip")
 }
 
@@ -32,13 +32,6 @@ local sw_loot =
     "boards",
     "rocks",
     "tropical_fish"
-}
-
-local tower_loot = 
-{
-    "boards",
-    "tentaclespot",
-    "spear"
 }
 
 local function onhammered(inst, worker)
@@ -253,6 +246,25 @@ local function mermhouse_crafted_postinit(inst)
 end
 
 --------------------------------------------------------------------------------------------------------
+--Craftsmerm Fishing House
+
+local function mermhouse_crafted_fisher_postinit(inst)
+	local minimap = inst.entity:AddMiniMapEntity()
+
+	if TUNING.MOD_MERMHOUSE_CRAFTED_FISHER_MINIMAP == 1 then
+		minimap:SetIcon( "mermhouse_crafted_fisher.tex" )
+	end    
+	inst.AnimState:SetBank("mermhouse_fisher")
+    inst.AnimState:SetBuild("mermhouse_crafted_fisher_postinit")
+    inst.AnimState:PlayAnimation("idle")
+	
+	inst.components.childspawner.childname = "mermfisher"
+    inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 2)
+    inst.components.childspawner:SetSpawnPeriod(10)
+    inst.components.childspawner:SetMaxChildren(1)
+end
+
+--------------------------------------------------------------------------------------------------------
 --Merm Flort-ifications
 
 local function mermwatchtower_postinit(inst)
@@ -263,7 +275,7 @@ local function mermwatchtower_postinit(inst)
 	end    
 	inst.AnimState:SetBank("merm_guard_tower")
     inst.AnimState:SetBuild("merm_guard_tower")
-    inst.AnimState:PlayAnimation("idle", true)
+    inst.AnimState:PlayAnimation("idle")
 	
 	inst.components.childspawner.childname = "merm"	--wurt will spawn mermguard, not normal merms.
     inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 2)
@@ -276,9 +288,12 @@ end
 return MakeMermHouse("mermhouse", mermhouse_postinit),
 		MakeMermHouse("mermhouse_fisher", mermhouse_fisher_postinit),
 		MakeMermHouse("mermhouse_crafted", mermhouse_crafted_postinit),
+		MakeMermHouse("mermhouse_crafted_fisher", mermhouse_crafted_fisher_postinit),
 		MakeMermHouse("mermwatchtower", mermwatchtower_postinit),
+		
 		MakePlacer("mermhouse_placer", "merm_house", "merm_house", "idle"),
 		MakePlacer("mermhouse_tropical_placer", "merm_sw_house", "mermhouse_tropical", "idle"),
 		MakePlacer("mermhouse_fisher_placer", "merm_fisherman_house", "mermhouse_fisher", "idle"),
 		MakePlacer("mermhouse_crafted_placer", "mermhouse_crafted", "mermhouse_crafted", "idle"),
+		MakePlacer("mermhouse_crafted_fisher_placer", "merm_fisherman_house", "mermhouse_crafted_fisher", "idle"),
 		MakePlacer("mermwatchtower_placer", "merm_guard_tower", "merm_guard_tower", "idle")
