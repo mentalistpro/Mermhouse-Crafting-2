@@ -225,8 +225,8 @@ local mermwatchtower = Recipe(								--register recipe at Vanilla world.
 	"mermwatchtower", 
 	{
 	Ingredient("boards", 5), 
-	Ingredient("tentaclespots", 2), 
-	Ingredient("spear", 4)
+	Ingredient("tentaclespots", 1), 
+	Ingredient("spear", 2)
 	},
 	RECIPETABS.TOWN, TECH.SCIENCE_TWO)
 	if IsDLCEnabled(2) or IsDLCEnabled(3) then				--register recipe at ROG/SW/HAM world.
