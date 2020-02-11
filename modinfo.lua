@@ -1,5 +1,5 @@
-name 					= "[TEST] Mermhouse Crafting"
-author 					= "Alberto Pietralunga and mentalistpro"
+name 					= "Mermhouse Crafting"
+author 					= "Alberto Pietralunga & mentalistpro"
 version 				= "2.0"
 description				= "Crafting merm house structures."
 forumthread 			= ""
@@ -24,7 +24,7 @@ configuration_options = {
 	default = 1
 	},
 	{
-	name = "f_icon", 
+	name = "mf_icon", 
 	label = "Fishermerm's Hut icon",
 	options = {
 			  {description = "OFF", data = 0},
@@ -33,8 +33,8 @@ configuration_options = {
 	default = 1
 	},
 	{
-	name = "c_icon", 
-	label = "Craftedmerms House icon",
+	name = "mc_icon", 
+	label = "Craftsmerm House icon",
 	options = {
 			  {description = "OFF", data = 0},
 			  {description = "ON", data = 1},
@@ -42,7 +42,16 @@ configuration_options = {
 	default = 1
 	},
 	{
-	name = "w_icon", 
+	name = "mcf_icon", 
+	label = "Craftsmerm Fishing House icon",
+	options = {
+			  {description = "OFF", data = 0},
+			  {description = "ON", data = 1},
+	          },
+	default = 1
+	},
+	{
+	name = "mw_icon", 
 	label = "Merm Flort-ifications icon",
 	options = {
 			  {description = "OFF", data = 0},
