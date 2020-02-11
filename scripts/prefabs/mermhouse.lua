@@ -285,7 +285,7 @@ end
 
 --------------------------------------------------------------------------------------------------------
 
-return MakeMermHouse("mermhouse", mermhouse_postinit),
+return 	MakeMermHouse("mermhouse", mermhouse_postinit),
 		MakeMermHouse("mermhouse_fisher", mermhouse_fisher_postinit),
 		MakeMermHouse("mermhouse_crafted", mermhouse_crafted_postinit),
 		MakeMermHouse("mermhouse_crafted_fisher", mermhouse_crafted_fisher_postinit),
