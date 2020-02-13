@@ -185,7 +185,7 @@ local function mermhouse_postinit(inst)
 		if TUNING.MOD_MERMHOUSE_MINIMAP == 1 then
 			minimap:SetIcon( "mermhouse_tropical.tex" )
 		end
-		inst.AnimState:SetBank("merm_sw_house")
+		inst.AnimState:SetBank("mermhouse_tropical")
 		inst.AnimState:SetBuild("mermhouse_tropical")
 		inst.AnimState:PlayAnimation("idle")
 		inst.components.lootdropper:SetLoot(sw_loot)
@@ -215,7 +215,7 @@ local function mermhouse_fisher_postinit(inst)
 	if TUNING.MOD_MERMHOUSE_FISHER_MINIMAP == 1 then
 		minimap:SetIcon( "mermhouse_fisher.tex" )
 	end
-    inst.AnimState:SetBank("merm_fisherman_house")
+    inst.AnimState:SetBank("mermhouse_fisher")
     inst.AnimState:SetBuild("mermhouse_fisher")
     inst.AnimState:PlayAnimation("idle")
 
@@ -292,8 +292,8 @@ return 	MakeMermHouse("mermhouse", mermhouse_postinit),
 		MakeMermHouse("mermwatchtower", mermwatchtower_postinit),
 		
 		MakePlacer("mermhouse_placer", "merm_house", "merm_house", "idle"),
-		MakePlacer("mermhouse_tropical_placer", "merm_sw_house", "mermhouse_tropical", "idle"),
-		MakePlacer("mermhouse_fisher_placer", "merm_fisherman_house", "mermhouse_fisher", "idle"),
+		MakePlacer("mermhouse_tropical_placer", "mermhouse_tropical", "mermhouse_tropical", "idle"),
+		MakePlacer("mermhouse_fisher_placer", "mermhouse_fisher", "mermhouse_fisher", "idle"),
 		MakePlacer("mermhouse_crafted_placer", "mermhouse_crafted", "mermhouse_crafted", "idle"),
 		MakePlacer("mermhouse_crafted_fisher_placer", "mermhouse_crafted_fisher", "mermhouse_crafted_fisher", "idle"),
 		MakePlacer("mermwatchtower_placer", "merm_guard_tower", "mermwatchtower", "idle")
