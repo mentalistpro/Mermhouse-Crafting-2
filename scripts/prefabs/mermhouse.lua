@@ -277,7 +277,7 @@ local function mermwatchtower_postinit(inst)
     inst.AnimState:SetBuild("mermwatchtower")
     inst.AnimState:PlayAnimation("idle")
 	
-	inst.components.childspawner.childname = "merm"	--wurt will spawn mermguard, not normal merms.
+	inst.components.childspawner.childname = "mermguard"
     inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 2)
     inst.components.childspawner:SetSpawnPeriod(10)
     inst.components.childspawner:SetMaxChildren(1)
