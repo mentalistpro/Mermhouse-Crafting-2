@@ -188,7 +188,6 @@ local function mermhouse_postinit(inst)
 		inst.AnimState:SetBank("mermhouse_tropical")
 		inst.AnimState:SetBuild("mermhouse_tropical")
 		inst.AnimState:PlayAnimation("idle")
-		inst.components.lootdropper:SetLoot(sw_loot)
 	else
 		if TUNING.MOD_MERMHOUSE_MINIMAP == 1 then
 			minimap:SetIcon( "mermhouse.tex" )
@@ -197,6 +196,11 @@ local function mermhouse_postinit(inst)
 		inst.AnimState:SetBank("merm_house")
 		inst.AnimState:SetBuild("merm_house")
 		inst.AnimState:PlayAnimation("idle")
+	end
+	
+	if SaveGameIndex:IsModeShipwrecked() then
+		inst.components.lootdropper:SetLoot(sw_loot)
+	else
 		inst.components.lootdropper:SetLoot(loot)
 	end
 	
@@ -218,6 +222,12 @@ local function mermhouse_fisher_postinit(inst)
     inst.AnimState:SetBank("mermhouse_fisher")
     inst.AnimState:SetBuild("mermhouse_fisher")
     inst.AnimState:PlayAnimation("idle")
+
+	if SaveGameIndex:IsModeShipwrecked() then
+		inst.components.lootdropper:SetLoot(sw_loot)
+	else
+		inst.components.lootdropper:SetLoot(loot)
+	end
 
 	inst.components.childspawner.childname = "mermfisher"
     inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 4) 
