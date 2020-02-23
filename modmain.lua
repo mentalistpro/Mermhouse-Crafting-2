@@ -71,7 +71,9 @@ local mermwatchtower_atlas = "images/inventoryimages/mermwatchtower.xml"
 --//Mermhouse//
 
 if IsDLCEnabled(2) or IsDLCEnabled(3) then
-	local mermhouse_rog = Recipe(							--register recipe at ROG world, so SW and HAM recipes won't replace ROG recipe.
+
+	--register recipe at ROG world, so SW and HAM recipes won't replace ROG recipe.
+	local mermhouse_rog = Recipe(	
 		"mermhouse", 
 		{
 		Ingredient("boards", 4), 
@@ -81,7 +83,8 @@ if IsDLCEnabled(2) or IsDLCEnabled(3) then
 		RECIPETABS.TOWN, TECH.SCIENCE_ONE, g[1], p[1])		
 		mermhouse_rog.atlas = mermhouse_atlas
 		
-	local mermhouse_sw = Recipe(							--register recipe at SW world.
+	--register recipe at SW world.	
+	local mermhouse_sw = Recipe(							
 		"mermhouse", 
 		{
 		Ingredient("boards", 4), 
@@ -90,8 +93,9 @@ if IsDLCEnabled(2) or IsDLCEnabled(3) then
 		},
 		RECIPETABS.TOWN, TECH.SCIENCE_ONE, g[2], p[2])		
 		mermhouse_sw.atlas = mermhouse_atlas
-
-	local mermhouse_ham = Recipe(							--register recipe at HAM world.
+		
+	--register recipe at HAM world.
+	local mermhouse_ham = Recipe(							
 		"mermhouse", 
 		{
 		Ingredient("boards", 4), 
@@ -102,7 +106,8 @@ if IsDLCEnabled(2) or IsDLCEnabled(3) then
 		mermhouse_ham.atlas = mermhouse_atlas
 
 else
-	local mermhouse = Recipe(								--register recipe at Vanilla world.
+	--register recipe at Vanilla world.
+	local mermhouse = Recipe(								
 		"mermhouse", 
 		{
 		Ingredient("boards", 4), 
@@ -116,7 +121,9 @@ end
 --//Fishermerm's Hut//
 
 if IsDLCEnabled(2) or IsDLCEnabled(3) then
-	local mermhouse_fisher = Recipe(						--register recipe at ROG/HAM world.
+
+	--register recipe at ROG/HAM world.
+	local mermhouse_fisher = Recipe(						
 		"mermhouse_fisher", 
 		{
 		Ingredient("boards", 4), 
@@ -127,7 +134,8 @@ if IsDLCEnabled(2) or IsDLCEnabled(3) then
 		RECIPETABS.TOWN, TECH.SCIENCE_ONE, g[4], p[3])
 		mermhouse_fisher.atlas = mermhouse_fisher_atlas
 		
-	local mermhouse_fisher_sw = Recipe(						--register recipe at SW world.
+	--register recipe at SW world.	
+	local mermhouse_fisher_sw = Recipe(						
 		"mermhouse_fisher", 
 		{
 		Ingredient("boards", 4), 
@@ -138,7 +146,8 @@ if IsDLCEnabled(2) or IsDLCEnabled(3) then
 		RECIPETABS.TOWN, TECH.SCIENCE_ONE, g[2], p[3])
 		mermhouse_fisher_sw.atlas = mermhouse_fisher_atlas
 else
-	local mermhouse_fisher = Recipe(						--register recipe at Vanilla world.
+	--register recipe at Vanilla world.
+	local mermhouse_fisher = Recipe(						
 		"mermhouse_fisher", 
 		{
 		Ingredient("boards", 4), 
@@ -153,7 +162,9 @@ end
 --//Craftsmerm House//
 
 if IsDLCEnabled(2) or IsDLCEnabled(3) then
-	local mermhouse_crafted = Recipe(						--register recipe at ROG/HAM world.
+
+	--register recipe at ROG/HAM world.
+	local mermhouse_crafted = Recipe(						
 		"mermhouse_crafted", 
 		{
 		Ingredient("boards", 4), 
@@ -163,7 +174,8 @@ if IsDLCEnabled(2) or IsDLCEnabled(3) then
 		RECIPETABS.TOWN, TECH.SCIENCE_ONE, g[4], p[4])
 		mermhouse_crafted.atlas = mermhouse_crafted_atlas
 
-	local mermhouse_crafted_sw = Recipe(					--register recipe at SW world.
+	--register recipe at SW world.
+	local mermhouse_crafted_sw = Recipe(					
 		"mermhouse_crafted", 
 		{
 		Ingredient("boards", 4), 
@@ -173,7 +185,8 @@ if IsDLCEnabled(2) or IsDLCEnabled(3) then
 		RECIPETABS.TOWN, TECH.SCIENCE_ONE, g[2], p[4])
 		mermhouse_crafted_sw.atlas = mermhouse_crafted_atlas
 else
-	local mermhouse_crafted = Recipe(						--register recipe at Vanilla world.
+	--register recipe at Vanilla world.
+	local mermhouse_crafted = Recipe(						
 		"mermhouse_crafted", 
 		{
 		Ingredient("boards", 4), 
@@ -187,7 +200,9 @@ end
 --//Craftsmerm Fishing House//
 
 if IsDLCEnabled(2) or IsDLCEnabled(3) then
-	local mermhouse_crafted_fisher = Recipe(				--register recipe at ROG/HAM world.
+
+	--register recipe at ROG/HAM world.
+	local mermhouse_crafted_fisher = Recipe(				
 		"mermhouse_crafted_fisher", 
 		{
 		Ingredient("boards", 4), 
@@ -198,7 +213,8 @@ if IsDLCEnabled(2) or IsDLCEnabled(3) then
 		RECIPETABS.TOWN, TECH.SCIENCE_ONE, g[4], p[5])
 		mermhouse_crafted_fisher.atlas = mermhouse_crafted_fisher_atlas
 
-	local mermhouse_crafted_fisher_sw = Recipe(					--register recipe at SW world.
+	--register recipe at SW world.
+	local mermhouse_crafted_fisher_sw = Recipe(				
 		"mermhouse_crafted_fisher", 
 		{
 		Ingredient("boards", 4), 
@@ -209,7 +225,8 @@ if IsDLCEnabled(2) or IsDLCEnabled(3) then
 		RECIPETABS.TOWN, TECH.SCIENCE_ONE, g[2], p[5])
 		mermhouse_crafted_fisher_sw.atlas = mermhouse_crafted_fisher_atlas
 else
-	local mermhouse_crafted_fisher = Recipe(						--register recipe at Vanilla world.
+	--register recipe at Vanilla world.
+	local mermhouse_crafted_fisher = Recipe(					
 		"mermhouse_crafted_fisher", 
 		{
 		Ingredient("boards", 4), 
@@ -223,7 +240,7 @@ end
 
 --//Merm Flort-ifications//
 
-local mermwatchtower = Recipe(								--register recipe at Vanilla world.
+local mermwatchtower = Recipe(								
 	"mermwatchtower", 
 	{
 	Ingredient("boards", 5), 
@@ -231,11 +248,45 @@ local mermwatchtower = Recipe(								--register recipe at Vanilla world.
 	Ingredient("spear", 2)
 	},
 	RECIPETABS.TOWN, TECH.SCIENCE_TWO)
-	if IsDLCEnabled(2) or IsDLCEnabled(3) then				--register recipe at ROG/SW/HAM world.
+	--register recipe at ROG/SW/HAM world.
+	if IsDLCEnabled(2) or IsDLCEnabled(3) then				
 		mermwatchtower.game_type = g[4] 
 	end	
 	mermwatchtower.placer = p[6]
 	mermwatchtower.atlas = mermwatchtower_atlas
+	
+--//Merm Head//
+
+local mermhead = Recipe(								
+	"mermhead", 
+	{
+	Ingredient("spoiled_food", 4), 
+	Ingredient("twigs", 4), 
+	},
+	RECIPETABS.TOWN, TECH.SCIENCE_TWO)
+	--register recipe at ROG/SW/HAM world.
+	if IsDLCEnabled(2) or IsDLCEnabled(3) then				
+		mermhead.game_type = g[4] 
+	end	
+	mermhead.placer = p[6]
+	mermhead.atlas = "images/inventoryimages/mermhead.xml"
+	
+--//Pig Head//
+
+local pighead = Recipe(								
+	"pighead", 
+	{
+	Ingredient("pigskin", 4), 
+	Ingredient("twigs", 4), 
+	},
+	RECIPETABS.TOWN, TECH.SCIENCE_TWO)
+	--register recipe at ROG/SW/HAM world.
+	if IsDLCEnabled(2) or IsDLCEnabled(3) then				
+		pighead.game_type = g[4] 
+	end	
+	pighead.placer = p[6]
+	pighead.atlas = "images/inventoryimages/pighead.xml"
+
 
 ----------------------------------------------------------------------------------------------------------------------------
 --#3 Strings
