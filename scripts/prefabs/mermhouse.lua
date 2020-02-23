@@ -17,7 +17,8 @@ local prefabs =
     --loot:
     "boards",
     "rocks",
-    "fish"
+    "fish",
+	"tropical_fish"
 }
 
 local loot =
@@ -147,7 +148,6 @@ local function MakeMermHouse(name, postinit)
 		
 		inst:AddComponent("workable")
 		inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
-		inst.components.workable:SetWorkLeft(2)
 		inst.components.workable:SetOnFinishCallback(onhammered)
 		inst.components.workable:SetOnWorkCallback(onhit)
 
@@ -203,11 +203,13 @@ local function mermhouse_postinit(inst)
 	else
 		inst.components.lootdropper:SetLoot(loot)
 	end
-	
+		
 	inst.components.childspawner.childname = "merm"
     inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 4)
     inst.components.childspawner:SetSpawnPeriod(10)
     inst.components.childspawner:SetMaxChildren(4)
+	
+    inst.components.workable:SetWorkLeft(2)
 end
 
 --------------------------------------------------------------------------------------------------------
@@ -229,10 +231,16 @@ local function mermhouse_fisher_postinit(inst)
 		inst.components.lootdropper:SetLoot(loot)
 	end
 
-	inst.components.childspawner.childname = "mermfisher"
+	if IsDLCEnabled(2) or IsDLCEnabled(3) then
+		inst.components.childspawner.childname = "mermfisher"
+	else
+		inst.components.childspawner.childname = "merm"
+	end
     inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 4) 
     inst.components.childspawner:SetSpawnPeriod(10)
     inst.components.childspawner:SetMaxChildren(2)
+
+    inst.components.workable:SetWorkLeft(2)
 end
 
 
@@ -253,6 +261,8 @@ local function mermhouse_crafted_postinit(inst)
     inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 2)
     inst.components.childspawner:SetSpawnPeriod(10)
     inst.components.childspawner:SetMaxChildren(1)
+
+    inst.components.workable:SetWorkLeft(4)
 end
 
 --------------------------------------------------------------------------------------------------------
@@ -268,10 +278,16 @@ local function mermhouse_crafted_fisher_postinit(inst)
     inst.AnimState:SetBuild("mermhouse_crafted_fisher")
     inst.AnimState:PlayAnimation("idle")
 	
-	inst.components.childspawner.childname = "mermfisher"
+	if IsDLCEnabled(2) or IsDLCEnabled(3) then
+		inst.components.childspawner.childname = "mermfisher"
+	else
+		inst.components.childspawner.childname = "merm"
+	end
     inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 2)
     inst.components.childspawner:SetSpawnPeriod(10)
     inst.components.childspawner:SetMaxChildren(1)
+
+    inst.components.workable:SetWorkLeft(4)
 end
 
 --------------------------------------------------------------------------------------------------------
@@ -287,10 +303,16 @@ local function mermwatchtower_postinit(inst)
     inst.AnimState:SetBuild("mermwatchtower")
     inst.AnimState:PlayAnimation("idle")
 	
-	inst.components.childspawner.childname = "mermguard"
+	if IsModCleverDisguiseEnabled == true then
+		inst.components.childspawner.childname = "mermguard"
+	else
+		inst.components.childspawner.childname = "merm"
+	end
     inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 2)
     inst.components.childspawner:SetSpawnPeriod(10)
     inst.components.childspawner:SetMaxChildren(1)
+	
+    inst.components.workable:SetWorkLeft(4)
 end
 
 --------------------------------------------------------------------------------------------------------

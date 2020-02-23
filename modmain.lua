@@ -54,6 +54,8 @@ TUNING.MOD_MERMHOUSE_CRAFTED_MINIMAP = GetModConfigData("mc_icon")
 TUNING.MOD_MERMHOUSE_CRAFTED_FISHER_MINIMAP = GetModConfigData("mcf_icon")
 TUNING.MOD_MERMWATCHTOWER_MINIMAP = GetModConfigData("mw_icon")
 
+IsModCleverDisguiseEnabled = false
+
 ------------------------------------------------------------------------------------------------------------------------------
 --#2 Recipes
 
