@@ -48,11 +48,13 @@ AddMinimapAtlas("minimap/mermwatchtower.xml")
 --Wurt related
 --ingredients and merm spawn no/rate
 
-TUNING.MOD_MERMHOUSE_MINIMAP = GetModConfigData("m_icon")
-TUNING.MOD_MERMHOUSE_FISHER_MINIMAP = GetModConfigData("mf_icon")
-TUNING.MOD_MERMHOUSE_CRAFTED_MINIMAP = GetModConfigData("mc_icon")
-TUNING.MOD_MERMHOUSE_CRAFTED_FISHER_MINIMAP = GetModConfigData("mcf_icon")
-TUNING.MOD_MERMWATCHTOWER_MINIMAP = GetModConfigData("mw_icon")
+TUNING.MERMHOUSE_MINIMAP = GetModConfigData("m_icon")
+TUNING.MERMHOUSE_FISHER_MINIMAP = GetModConfigData("mf_icon")
+TUNING.MERMHOUSE_CRAFTED_MINIMAP = GetModConfigData("mc_icon")
+TUNING.MERMHOUSE_CRAFTED_FISHER_MINIMAP = GetModConfigData("mcf_icon")
+TUNING.MERMWATCHTOWER_MINIMAP = GetModConfigData("mw_icon")
+
+TUNING.IsModCleverDisguiseEnabled = 0
 
 ------------------------------------------------------------------------------------------------------------------------------
 --#2 Recipes

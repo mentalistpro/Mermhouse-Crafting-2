@@ -17,7 +17,8 @@ local prefabs =
     --loot:
     "boards",
     "rocks",
-    "fish"
+    "fish",
+	"tropical_fish"
 }
 
 local loot =
@@ -147,7 +148,6 @@ local function MakeMermHouse(name, postinit)
 		
 		inst:AddComponent("workable")
 		inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
-		inst.components.workable:SetWorkLeft(2)
 		inst.components.workable:SetOnFinishCallback(onhammered)
 		inst.components.workable:SetOnWorkCallback(onhit)
 
@@ -182,14 +182,14 @@ local function mermhouse_postinit(inst)
 	local minimap = inst.entity:AddMiniMapEntity()
 
 	if SaveGameIndex:IsModeShipwrecked() or SaveGameIndex:IsModePorkland() then
-		if TUNING.MOD_MERMHOUSE_MINIMAP == 1 then
+		if TUNING.MERMHOUSE_MINIMAP == 1 then
 			minimap:SetIcon( "mermhouse_tropical.tex" )
 		end
 		inst.AnimState:SetBank("mermhouse_tropical")
 		inst.AnimState:SetBuild("mermhouse_tropical")
 		inst.AnimState:PlayAnimation("idle")
 	else
-		if TUNING.MOD_MERMHOUSE_MINIMAP == 1 then
+		if TUNING.MERMHOUSE_MINIMAP == 1 then
 			minimap:SetIcon( "mermhouse.tex" )
 		end
 		inst.MiniMapEntity:SetIcon("mermhouse.tex")
@@ -203,11 +203,13 @@ local function mermhouse_postinit(inst)
 	else
 		inst.components.lootdropper:SetLoot(loot)
 	end
-	
+		
 	inst.components.childspawner.childname = "merm"
     inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 4)
     inst.components.childspawner:SetSpawnPeriod(10)
     inst.components.childspawner:SetMaxChildren(4)
+	
+    inst.components.workable:SetWorkLeft(2)
 end
 
 --------------------------------------------------------------------------------------------------------
@@ -216,7 +218,7 @@ end
 local function mermhouse_fisher_postinit(inst)
 	local minimap = inst.entity:AddMiniMapEntity()
 
-	if TUNING.MOD_MERMHOUSE_FISHER_MINIMAP == 1 then
+	if TUNING.MERMHOUSE_FISHER_MINIMAP == 1 then
 		minimap:SetIcon( "mermhouse_fisher.tex" )
 	end
     inst.AnimState:SetBank("mermhouse_fisher")
@@ -229,10 +231,16 @@ local function mermhouse_fisher_postinit(inst)
 		inst.components.lootdropper:SetLoot(loot)
 	end
 
-	inst.components.childspawner.childname = "mermfisher"
+	if IsDLCEnabled(2) or IsDLCEnabled(3) then
+		inst.components.childspawner.childname = "mermfisher"
+	else
+		inst.components.childspawner.childname = "merm"
+	end
     inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 4) 
     inst.components.childspawner:SetSpawnPeriod(10)
     inst.components.childspawner:SetMaxChildren(2)
+
+    inst.components.workable:SetWorkLeft(2)
 end
 
 
@@ -242,7 +250,7 @@ end
 local function mermhouse_crafted_postinit(inst)
 	local minimap = inst.entity:AddMiniMapEntity()
 
-	if TUNING.MOD_MERMHOUSE_CRAFTED_MINIMAP == 1 then
+	if TUNING.MERMHOUSE_CRAFTED_MINIMAP == 1 then
 		minimap:SetIcon( "mermhouse_crafted.tex" )
 	end    
 	inst.AnimState:SetBank("mermhouse_crafted")
@@ -253,6 +261,8 @@ local function mermhouse_crafted_postinit(inst)
     inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 2)
     inst.components.childspawner:SetSpawnPeriod(10)
     inst.components.childspawner:SetMaxChildren(1)
+
+    inst.components.workable:SetWorkLeft(4)
 end
 
 --------------------------------------------------------------------------------------------------------
@@ -261,17 +271,23 @@ end
 local function mermhouse_crafted_fisher_postinit(inst)
 	local minimap = inst.entity:AddMiniMapEntity()
 
-	if TUNING.MOD_MERMHOUSE_CRAFTED_FISHER_MINIMAP == 1 then
+	if TUNING.MERMHOUSE_CRAFTED_FISHER_MINIMAP == 1 then
 		minimap:SetIcon( "mermhouse_crafted_fisher.tex" )
 	end    
 	inst.AnimState:SetBank("mermhouse_crafted_fisher")
     inst.AnimState:SetBuild("mermhouse_crafted_fisher")
     inst.AnimState:PlayAnimation("idle")
 	
-	inst.components.childspawner.childname = "mermfisher"
+	if IsDLCEnabled(2) or IsDLCEnabled(3) then
+		inst.components.childspawner.childname = "mermfisher"
+	else
+		inst.components.childspawner.childname = "merm"
+	end
     inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 2)
     inst.components.childspawner:SetSpawnPeriod(10)
     inst.components.childspawner:SetMaxChildren(1)
+
+    inst.components.workable:SetWorkLeft(4)
 end
 
 --------------------------------------------------------------------------------------------------------
@@ -280,17 +296,23 @@ end
 local function mermwatchtower_postinit(inst)
 	local minimap = inst.entity:AddMiniMapEntity()
 
-	if TUNING.MOD_MERMWATCHTOWER_MINIMAP == 1 then
+	if TUNING.MERMWATCHTOWER_MINIMAP == 1 then
 		minimap:SetIcon( "mermwatchtower.tex" )
 	end    
 	inst.AnimState:SetBank("merm_guard_tower")
     inst.AnimState:SetBuild("mermwatchtower")
     inst.AnimState:PlayAnimation("idle")
 	
-	inst.components.childspawner.childname = "mermguard"
+	if TUNING.IsModCleverDisguiseEnabled == 1 then
+		inst.components.childspawner.childname = "mermguard"
+	else
+		inst.components.childspawner.childname = "merm"
+	end
     inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 2)
     inst.components.childspawner:SetSpawnPeriod(10)
     inst.components.childspawner:SetMaxChildren(1)
+	
+    inst.components.workable:SetWorkLeft(4)
 end
 
 --------------------------------------------------------------------------------------------------------
