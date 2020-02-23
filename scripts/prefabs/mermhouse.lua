@@ -182,14 +182,14 @@ local function mermhouse_postinit(inst)
 	local minimap = inst.entity:AddMiniMapEntity()
 
 	if SaveGameIndex:IsModeShipwrecked() or SaveGameIndex:IsModePorkland() then
-		if TUNING.MOD_MERMHOUSE_MINIMAP == 1 then
+		if TUNING.MERMHOUSE_MINIMAP == 1 then
 			minimap:SetIcon( "mermhouse_tropical.tex" )
 		end
 		inst.AnimState:SetBank("mermhouse_tropical")
 		inst.AnimState:SetBuild("mermhouse_tropical")
 		inst.AnimState:PlayAnimation("idle")
 	else
-		if TUNING.MOD_MERMHOUSE_MINIMAP == 1 then
+		if TUNING.MERMHOUSE_MINIMAP == 1 then
 			minimap:SetIcon( "mermhouse.tex" )
 		end
 		inst.MiniMapEntity:SetIcon("mermhouse.tex")
@@ -218,7 +218,7 @@ end
 local function mermhouse_fisher_postinit(inst)
 	local minimap = inst.entity:AddMiniMapEntity()
 
-	if TUNING.MOD_MERMHOUSE_FISHER_MINIMAP == 1 then
+	if TUNING.MERMHOUSE_FISHER_MINIMAP == 1 then
 		minimap:SetIcon( "mermhouse_fisher.tex" )
 	end
     inst.AnimState:SetBank("mermhouse_fisher")
@@ -250,7 +250,7 @@ end
 local function mermhouse_crafted_postinit(inst)
 	local minimap = inst.entity:AddMiniMapEntity()
 
-	if TUNING.MOD_MERMHOUSE_CRAFTED_MINIMAP == 1 then
+	if TUNING.MERMHOUSE_CRAFTED_MINIMAP == 1 then
 		minimap:SetIcon( "mermhouse_crafted.tex" )
 	end    
 	inst.AnimState:SetBank("mermhouse_crafted")
@@ -271,7 +271,7 @@ end
 local function mermhouse_crafted_fisher_postinit(inst)
 	local minimap = inst.entity:AddMiniMapEntity()
 
-	if TUNING.MOD_MERMHOUSE_CRAFTED_FISHER_MINIMAP == 1 then
+	if TUNING.MERMHOUSE_CRAFTED_FISHER_MINIMAP == 1 then
 		minimap:SetIcon( "mermhouse_crafted_fisher.tex" )
 	end    
 	inst.AnimState:SetBank("mermhouse_crafted_fisher")
@@ -296,14 +296,14 @@ end
 local function mermwatchtower_postinit(inst)
 	local minimap = inst.entity:AddMiniMapEntity()
 
-	if TUNING.MOD_MERMWATCHTOWER_MINIMAP == 1 then
+	if TUNING.MERMWATCHTOWER_MINIMAP == 1 then
 		minimap:SetIcon( "mermwatchtower.tex" )
 	end    
 	inst.AnimState:SetBank("merm_guard_tower")
     inst.AnimState:SetBuild("mermwatchtower")
     inst.AnimState:PlayAnimation("idle")
 	
-	if IsModCleverDisguiseEnabled == true then
+	if TUNING.IsModCleverDisguiseEnabled == 1 then
 		inst.components.childspawner.childname = "mermguard"
 	else
 		inst.components.childspawner.childname = "merm"
