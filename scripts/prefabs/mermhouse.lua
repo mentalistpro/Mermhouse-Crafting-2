@@ -35,6 +35,30 @@ local sw_loot =
     "tropical_fish"
 }
 
+--------------------------------------------------------------------------------------------------------
+
+--[[CONTENT]]
+--#1 Physical properties
+--#2 Spawning
+--#3 fn
+--#4 Mermhouse
+--#5 Fishermerm's House
+--#6 Craftsmerm House
+--#7 Craftsmerm Fishing House
+--#8 Merm Flort-ifications
+--#9 MakeMermHouse
+
+--------------------------------------------------------------------------------------------------------
+--#1 Physical properties
+
+local function onbuilt(inst)
+    if GetPlayer():HasTag("mermbuilder") then
+        if GetPlayer().mermbuilderfn then 
+            GetPlayer().mermbuilderfn(GetPlayer())
+        end
+    end 
+end
+
 local function onhammered(inst, worker)
     if inst:HasTag("fire") and inst.components.burnable then
         inst.components.burnable:Extinguish()
@@ -55,6 +79,19 @@ local function onhit(inst, worker)
         inst.AnimState:PushAnimation("idle")
     end
 end
+
+local function onignite(inst)
+    if inst.components.childspawner then
+        inst.components.childspawner:ReleaseAllChildren()
+    end
+end
+
+local function onburntup(inst)
+    inst.AnimState:PlayAnimation("burnt")
+end
+
+--------------------------------------------------------------------------------------------------------
+--#2 Spawning
 
 local function StartSpawning(inst)
     if not inst:HasTag("burnt") then
@@ -90,28 +127,6 @@ local function OnGoHome(inst, child)
     end
 end
 
-local function onsave(inst, data)
-    if inst:HasTag("burnt") or inst:HasTag("fire") then
-        data.burnt = true
-    end
-end
-
-local function onload(inst, data)
-    if data and data.burnt then
-        inst.components.burnable.onburnt(inst)
-    end
-end
-
-local function onignite(inst)
-    if inst.components.childspawner then
-        inst.components.childspawner:ReleaseAllChildren()
-    end
-end
-
-local function onburntup(inst)
-    inst.AnimState:PlayAnimation("burnt")
-end
-
 local function OnIsDay(inst)
     StopSpawning(inst) 
 end
@@ -126,6 +141,19 @@ local function OnIsDusk(inst)
 end
 
 --------------------------------------------------------------------------------------------------------
+--#3 fn()
+
+local function onsave(inst, data)
+    if inst:HasTag("burnt") or inst:HasTag("fire") then
+        data.burnt = true
+    end
+end
+
+local function onload(inst, data)
+    if data and data.burnt then
+        inst.components.burnable.onburnt(inst)
+    end
+end
 
 local function MakeMermHouse(name, postinit)
     local function fn()
@@ -152,13 +180,16 @@ local function MakeMermHouse(name, postinit)
         inst.components.workable:SetOnWorkCallback(onhit)
 
         inst:ListenForEvent("dusktime", OnIsDusk, GetWorld())
-        inst:ListenForEvent("daytime", OnIsDay, GetWorld())
+        inst:ListenForEvent("daytime", OnIsDay, GetWorld())    
+        
         StartSpawning(inst)
 
         MakeMediumBurnable(inst, nil, nil, true)
         MakeLargePropagator(inst)
         inst:ListenForEvent("onignite", onignite)
-        inst:ListenForEvent("burntup", onburntup)   
+        inst:ListenForEvent("burntup", onburntup)
+        inst:ListenForEvent( "onbuilt", onbuilt)    
+
 
         MakeSnowCovered(inst, .01)      
         
@@ -176,7 +207,7 @@ local function MakeMermHouse(name, postinit)
 end
 
 --------------------------------------------------------------------------------------------------------
---Mermhouse
+--#4 Mermhouse
 
 local function mermhouse_postinit(inst)
     local minimap = inst.entity:AddMiniMapEntity()
@@ -213,7 +244,7 @@ local function mermhouse_postinit(inst)
 end
 
 --------------------------------------------------------------------------------------------------------
---Fishermerm's Hut
+--#5 Fishermerm's Hut
 
 local function mermhouse_fisher_postinit(inst)
     local minimap = inst.entity:AddMiniMapEntity()
@@ -245,7 +276,7 @@ end
 
 
 --------------------------------------------------------------------------------------------------------
---Craftsmerm House
+--#6 Craftsmerm House
 
 local function mermhouse_crafted_postinit(inst)
     local minimap = inst.entity:AddMiniMapEntity()
@@ -266,7 +297,7 @@ local function mermhouse_crafted_postinit(inst)
 end
 
 --------------------------------------------------------------------------------------------------------
---Craftsmerm Fishing House
+--#7 Craftsmerm Fishing House
 
 local function mermhouse_crafted_fisher_postinit(inst)
     local minimap = inst.entity:AddMiniMapEntity()
@@ -291,7 +322,7 @@ local function mermhouse_crafted_fisher_postinit(inst)
 end
 
 --------------------------------------------------------------------------------------------------------
---Merm Flort-ifications
+--#8 Merm Flort-ifications
 
 local function mermwatchtower_postinit(inst)
     local minimap = inst.entity:AddMiniMapEntity()
@@ -302,12 +333,8 @@ local function mermwatchtower_postinit(inst)
     inst.AnimState:SetBank("merm_guard_tower")
     inst.AnimState:SetBuild("mermwatchtower")
     inst.AnimState:PlayAnimation("idle")
-    
-    if TUNING.IsBMEnabled == 1 then
-        inst.components.childspawner.childname = "mermguard"
-    else
-        inst.components.childspawner.childname = "merm"
-    end
+
+    inst.components.childspawner.childname = "merm"
     inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 2)
     inst.components.childspawner:SetSpawnPeriod(10)
     inst.components.childspawner:SetMaxChildren(1)
@@ -316,6 +343,7 @@ local function mermwatchtower_postinit(inst)
 end
 
 --------------------------------------------------------------------------------------------------------
+--#9 MakeMermHouse
 
 return  MakeMermHouse("mermhouse", mermhouse_postinit),
         MakeMermHouse("mermhouse_fisher", mermhouse_fisher_postinit),
