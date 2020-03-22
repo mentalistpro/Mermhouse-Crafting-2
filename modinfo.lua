@@ -1,6 +1,6 @@
 name                        = "Mermhouse Crafting"
 author                      = "Alberto Pietralunga & mentalistpro"
-version                     = "2.2.5"
+version                     = "2.2.6"
 description                 = "Crafting merm house structures."
 forumthread                 = ""
 api_version                 = 6

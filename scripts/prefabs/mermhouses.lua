@@ -154,19 +154,6 @@ local function OnGoHome(inst, child)
     end
 end
 
-local function OnIsDay(inst)
-    StopSpawning(inst) 
-end
-
-local function OnIsDusk(inst)
-    if GetSeasonManager() and not GetSeasonManager():IsWinter() then
-        if inst.components.childspawner then
-            inst.components.childspawner:ReleaseAllChildren()
-        end
-    end
-    StartSpawning(inst) 
-end
-
 --------------------------------------------------------------------------------------------------------
 --#3 fn()
 
@@ -197,15 +184,6 @@ local function MakeMermHouse(name, postinit)
         inst:AddComponent("childspawner")
         inst.components.childspawner:SetSpawnedFn(OnSpawned)
         inst.components.childspawner:SetGoHomeFn(OnGoHome)
-        
-        inst:AddComponent("inspectable")
-        inst:AddComponent("lootdropper")
-        
-        inst:AddComponent("workable")
-        inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
-        inst.components.workable:SetOnFinishCallback(onhammered)
-        inst.components.workable:SetOnWorkCallback(onhit)
-
         inst:ListenForEvent("dusktime", 
             function() 
                 if not inst:HasTag("burnt") then
@@ -218,6 +196,14 @@ local function MakeMermHouse(name, postinit)
         GetWorld())
         inst:ListenForEvent("daytime", function() StopSpawning(inst) end , GetWorld())
         StartSpawning(inst)
+        
+        inst:AddComponent("inspectable")
+        inst:AddComponent("lootdropper")
+        
+        inst:AddComponent("workable")
+        inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
+        inst.components.workable:SetOnFinishCallback(onhammered)
+        inst.components.workable:SetOnWorkCallback(onhit)
 
         MakeMediumBurnable(inst, nil, nil, true)
         MakeLargePropagator(inst)

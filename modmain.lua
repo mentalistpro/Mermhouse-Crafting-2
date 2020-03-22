@@ -1,6 +1,6 @@
 PrefabFiles = 
 {
-    "mermhouse",
+    "mermhouses",
     "mermheadplacer",
     "pigheadplacer"
 }
