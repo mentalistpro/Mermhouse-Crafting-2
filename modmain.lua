@@ -38,12 +38,11 @@ AddMinimapAtlas("minimap/mermwatchtower.xml")
 ------------------------------------------------------------------------------------------------------------------------------
 --#1 Config
 
-TUNING.MERMHOUSE_IS_ON_MARSH = GetModConfigData("on_marsh")
+TUNING.MERMHOUSE_ONLY_ON_MARSH = GetModConfigData("on_marsh")
 TUNING.MERMHOUSE_MINIMAP_ICON = GetModConfigData("minimap_icon")
 --TUNING.MERMHOUSE_FISH_NUMBER = GetModConfigData("fish")
 
 --Remove prefab dependencies, thus reduce log spam
-
 local _ctor = Prefab._ctor
 Prefab._ctor = function(self, ...)
     _ctor(self, ...)
@@ -59,10 +58,34 @@ Prefab._ctor = function(self, ...)
     end
 end
 
+local _G = GLOBAL
+local GetWorld = _G.GetWorld
+local GROUND = _G.GROUND
+
+--Build on marsh only
+if TUNING.MERMHOUSE_ONLY_ON_MARSH == 0 then
+    AddComponentPostInit("builder", function(self, inst)
+        local CanBuildAtPoint_old = self.CanBuildAtPoint
+        self.CanBuildAtPoint = function(self, pt, recipe)
+
+            if recipe.name == "mermhouse_crafted" then
+                local tile = GetWorld().Map:GetTileAtPoint(pt:Get())
+                if tile == GROUND.MARSH or tile == GROUND.TIDALMARSH then
+                    return true
+                else
+                    return false
+                end
+            else
+                CanBuildAtPoint_old(self, pt, recipe)
+                return true
+            end
+        end
+    end)
+end
+
 ------------------------------------------------------------------------------------------------------------------------------
 --#2 Recipes
 
-local _G = GLOBAL
 local require = _G.require
 local Ingredient = _G.Ingredient
 local IsDLCEnabled = _G.IsDLCEnabled

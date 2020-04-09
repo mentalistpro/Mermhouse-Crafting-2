@@ -117,6 +117,14 @@ local function onburntup(inst)
     inst.AnimState:PlayAnimation("burnt")
 end
 
+local function onMarsh(inst, pt)
+    if GetWorld().Map:GetTileAtPoint(pt:Get()) == GROUND.MARSH or GetWorld().Map:GetTileAtPoint(pt:Get()) == GROUND.TIDALMARSH then
+        return true
+    else
+        return false
+    end
+end
+
 --------------------------------------------------------------------------------------------------------
 --#2 Spawning
 
@@ -234,14 +242,14 @@ local function mermhouse_postinit(inst)
     local minimap = inst.entity:AddMiniMapEntity()
 
     if SaveGameIndex:IsModeShipwrecked() or SaveGameIndex:IsModePorkland() then
-        if TUNING.MERMHOUSE_MINIMAP_ICON == 1 then
+        if TUNING.MERMHOUSE_MINIMAP_ICON == 0 then
             minimap:SetIcon( "mermhouse_tropical.tex" )
         end
         inst.AnimState:SetBank("merm_sw_house")
         inst.AnimState:SetBuild("merm_sw_house_2")
         inst.AnimState:PlayAnimation("idle")
     else
-        if TUNING.MERMHOUSE_MINIMAP_ICON == 1 then
+        if TUNING.MERMHOUSE_MINIMAP_ICON == 0 then
             minimap:SetIcon( "mermhouse.tex" )
         end
         inst.MiniMapEntity:SetIcon("mermhouse.tex")
@@ -270,7 +278,7 @@ end
 local function mermhouse_fisher_postinit(inst)
     local minimap = inst.entity:AddMiniMapEntity()
 
-    if TUNING.MERMHOUSE_MINIMAP_ICON == 1 then
+    if TUNING.MERMHOUSE_MINIMAP_ICON == 0 then
         minimap:SetIcon( "mermhouse_fisher.tex" )
     end
     inst.AnimState:SetBank("merm_fisherman_house")
@@ -302,7 +310,7 @@ end
 local function mermhouse_crafted_postinit(inst)
     local minimap = inst.entity:AddMiniMapEntity()
 
-    if TUNING.MERMHOUSE_MINIMAP_ICON == 1 then
+    if TUNING.MERMHOUSE_MINIMAP_ICON == 0 then
         minimap:SetIcon( "mermhouse_crafted.tex" )
     end
     inst.AnimState:SetBank("mermhouse_crafted")
@@ -329,7 +337,7 @@ end
 local function mermhouse_crafted_fisher_postinit(inst)
     local minimap = inst.entity:AddMiniMapEntity()
 
-    if TUNING.MERMHOUSE_MINIMAP_ICON == 1 then
+    if TUNING.MERMHOUSE_MINIMAP_ICON == 0 then
         minimap:SetIcon( "mermhouse_crafted_fisher.tex" )
     end
     inst.AnimState:SetBank("mermhouse_crafted_fisher")
@@ -360,7 +368,7 @@ end
 local function mermwatchtower_postinit(inst)
     local minimap = inst.entity:AddMiniMapEntity()
 
-    if TUNING.MERMHOUSE_MINIMAP_ICON == 1 then
+    if TUNING.MERMHOUSE_MINIMAP_ICON == 0 then
         minimap:SetIcon( "mermwatchtower.tex" )
     end
     inst.AnimState:SetBank("merm_guard_tower")

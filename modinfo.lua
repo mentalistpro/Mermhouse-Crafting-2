@@ -36,11 +36,11 @@ local function range(a, b, step)
     return opts
 end
 
---config
+--Configurables
 configuration_options = {
     {
     name = "on_marsh",
-    label = "Built on marsh",
+    label = "Only on marsh",
     options = {
               {description = "YES", data = 0},
               {description = "NO", data = 1},
