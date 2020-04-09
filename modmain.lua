@@ -1,11 +1,10 @@
-PrefabFiles = 
+PrefabFiles =
 {
     "mermhouses",
-    "mermheadplacer",
-    "pigheadplacer"
+    "stickheads_placer",
 }
 
-Assets = 
+Assets =
 {
     Asset("ATLAS", "images/inventoryimages/mermhouse.xml"),
     Asset("ATLAS", "images/inventoryimages/mermhouse_fisher.xml"),
@@ -39,7 +38,8 @@ AddMinimapAtlas("minimap/mermwatchtower.xml")
 ------------------------------------------------------------------------------------------------------------------------------
 --#1 Config
 
-TUNING.MERMHOUSE_MINIMAP_ICON = GetModConfigData("icon")
+TUNING.MERMHOUSE_IS_ON_MARSH = GetModConfigData("on_marsh")
+TUNING.MERMHOUSE_MINIMAP_ICON = GetModConfigData("minimap_icon")
 --TUNING.MERMHOUSE_FISH_NUMBER = GetModConfigData("fish")
 
 --Remove prefab dependencies, thus reduce log spam
@@ -65,46 +65,44 @@ end
 local _G = GLOBAL
 local require = _G.require
 local Ingredient = _G.Ingredient
-local IsDLCEnabled = _G.IsDLCEnabled 
+local IsDLCEnabled = _G.IsDLCEnabled
 local Recipe = _G.Recipe
 local RECIPETABS = _G.RECIPETABS
 local RECIPE_GAME_TYPE = _G.RECIPE_GAME_TYPE
 local TECH = _G.TECH
 
 --Mermhouse
-
 if IsDLCEnabled and ( IsDLCEnabled(2) or IsDLCEnabled(3) ) then
-    local mermhouse = Recipe(                                 
-        "mermhouse", 
+    local mermhouse = Recipe(
+        "mermhouse",
         {
-            Ingredient("boards", 4), 
-            Ingredient("rocks", 9), 
-            Ingredient("tropical_fish", 8)   
+            Ingredient("boards", 4),
+            Ingredient("rocks", 9),
+            Ingredient("tropical_fish", 8)
         },
         RECIPETABS.TOWN, TECH.SCIENCE_ONE, "shipwrecked")
         mermhouse.placer = "mermhouse_tropical_placer"
         mermhouse.atlas = "images/inventoryimages/mermhouse.xml"
 end
 
-local mermhouse = Recipe(                                 
-    "mermhouse", 
+local mermhouse = Recipe(
+    "mermhouse",
     {
-        Ingredient("boards", 4), 
-        Ingredient("rocks", 9), 
-        Ingredient("fish", 8)   
+        Ingredient("boards", 4),
+        Ingredient("rocks", 9),
+        Ingredient("fish", 8)
     },
     RECIPETABS.TOWN, TECH.SCIENCE_ONE)
     mermhouse.placer = "mermhouse_placer"
     mermhouse.atlas = "images/inventoryimages/mermhouse.xml"
 
 --Fishermerm's Hut
-
 if IsDLCEnabled and ( IsDLCEnabled(2) or IsDLCEnabled(3) ) then
-    local mermhouse_fisher = Recipe(                                 
-        "mermhouse_fisher", 
+    local mermhouse_fisher = Recipe(
+        "mermhouse_fisher",
         {
-            Ingredient("boards", 4), 
-            Ingredient("rocks", 9), 
+            Ingredient("boards", 4),
+            Ingredient("rocks", 9),
             Ingredient("tropical_fish", 8),
             Ingredient("fishingrod", 2)
         },
@@ -113,11 +111,11 @@ if IsDLCEnabled and ( IsDLCEnabled(2) or IsDLCEnabled(3) ) then
         mermhouse_fisher.atlas = "images/inventoryimages/mermhouse_fisher.xml"
 end
 
-local mermhouse_fisher = Recipe(                                 
-    "mermhouse_fisher", 
+local mermhouse_fisher = Recipe(
+    "mermhouse_fisher",
     {
-        Ingredient("boards", 4), 
-        Ingredient("rocks", 9), 
+        Ingredient("boards", 4),
+        Ingredient("rocks", 9),
         Ingredient("fish", 8),
         Ingredient("fishingrod", 2)
     },
@@ -126,12 +124,11 @@ local mermhouse_fisher = Recipe(
     mermhouse_fisher.atlas = "images/inventoryimages/mermhouse_fisher.xml"
 
 --Craftsmerm House
-
 if IsDLCEnabled and ( IsDLCEnabled(2) or IsDLCEnabled(3) ) then
-    local mermhouse_crafted = Recipe(                                 
-        "mermhouse_crafted", 
+    local mermhouse_crafted = Recipe(
+        "mermhouse_crafted",
         {
-            Ingredient("boards", 4), 
+            Ingredient("boards", 4),
             Ingredient("cutreeds", 3),
             Ingredient("tropical_fish", 2)
         },
@@ -140,10 +137,10 @@ if IsDLCEnabled and ( IsDLCEnabled(2) or IsDLCEnabled(3) ) then
         mermhouse_crafted.atlas = "images/inventoryimages/mermhouse_crafted.xml"
 end
 
-local mermhouse_crafted = Recipe(                                 
-    "mermhouse_crafted", 
+local mermhouse_crafted = Recipe(
+    "mermhouse_crafted",
     {
-        Ingredient("boards", 4), 
+        Ingredient("boards", 4),
         Ingredient("cutreeds", 3),
         Ingredient("fish", 2)
     },
@@ -152,12 +149,11 @@ local mermhouse_crafted = Recipe(
     mermhouse_crafted.atlas = "images/inventoryimages/mermhouse_crafted.xml"
 
 --Craftsmerm Fishing House
-
 if IsDLCEnabled and ( IsDLCEnabled(2) or IsDLCEnabled(3) ) then
-    local mermhouse_crafted_fisher = Recipe( 
-        "mermhouse_crafted_fisher", 
+    local mermhouse_crafted_fisher = Recipe(
+        "mermhouse_crafted_fisher",
         {
-            Ingredient("boards", 4), 
+            Ingredient("boards", 4),
             Ingredient("cutreeds", 3),
             Ingredient("tropical_fish", 2),
             Ingredient("fishingrod", 2)
@@ -168,9 +164,9 @@ if IsDLCEnabled and ( IsDLCEnabled(2) or IsDLCEnabled(3) ) then
 end
 
 local mermhouse_crafted_fisher = Recipe(
-    "mermhouse_crafted_fisher", 
+    "mermhouse_crafted_fisher",
     {
-        Ingredient("boards", 4), 
+        Ingredient("boards", 4),
         Ingredient("cutreeds", 3),
         Ingredient("fish", 2),
         Ingredient("fishingrod", 2)
@@ -178,63 +174,60 @@ local mermhouse_crafted_fisher = Recipe(
     RECIPETABS.TOWN, TECH.SCIENCE_ONE)
     mermhouse_crafted_fisher.placer = "mermhouse_crafted_fisher_placer"
     mermhouse_crafted_fisher.atlas = "images/inventoryimages/mermhouse_crafted_fisher.xml"
- 
---Merm Flort-ifications
 
-local mermwatchtower = Recipe(                    
-    "mermwatchtower", 
+--Merm Flort-ifications
+local mermwatchtower = Recipe(
+    "mermwatchtower",
     {
-        Ingredient("boards", 5), 
-        Ingredient("tentaclespots", 1), 
+        Ingredient("boards", 5),
+        Ingredient("tentaclespots", 1),
         Ingredient("spear", 2)
     },
     RECIPETABS.TOWN, TECH.SCIENCE_TWO)
 
     if IsDLCEnabled and ( IsDLCEnabled(1) or IsDLCEnabled(2) or IsDLCEnabled(3) ) then
         mermwatchtower.game_type = "common"
-    end 
+    end
     mermwatchtower.placer = "mermwatchtower_placer"
     mermwatchtower.atlas = "images/inventoryimages/mermwatchtower.xml"
- 
---Merm Head
 
-local mermhead = Recipe(           
-    "mermhead", 
+--Merm Head
+local mermhead = Recipe(
+    "mermhead",
     {
-        Ingredient("spoiled_food", 4), 
-        Ingredient("twigs", 4), 
+        Ingredient("spoiled_food", 4),
+        Ingredient("twigs", 4),
     },
     RECIPETABS.TOWN, TECH.SCIENCE_ONE)
 
     if IsDLCEnabled and ( IsDLCEnabled(1) or IsDLCEnabled(2) or IsDLCEnabled(3) ) then
         mermhead.game_type = "common"
-    end 
+    end
     mermhead.placer = "mermhead_placer"
     mermhead.atlas = "images/inventoryimages/mermhead.xml"
 
-AddPrefabPostInit("mermhead", 
+AddPrefabPostInit("mermhead",
     function(inst)
         inst.components.lootdropper:SetLoot({"spoiled_food", "twigs"}) --add on top of existing loot drop
     end
-) 
+)
 
 --Pig Head
-
-local pighead = Recipe(                             
-    "pighead", 
+local pighead = Recipe(
+    "pighead",
     {
-        Ingredient("pigskin", 4), 
-        Ingredient("twigs", 4), 
+        Ingredient("pigskin", 4),
+        Ingredient("twigs", 4),
     },
     RECIPETABS.TOWN, TECH.SCIENCE_ONE)
 
     if IsDLCEnabled and ( IsDLCEnabled(1) or IsDLCEnabled(2) or IsDLCEnabled(3) ) then
-        pighead.game_type = "common" 
-    end 
+        pighead.game_type = "common"
+    end
     pighead.placer = "pighead_placer"
     pighead.atlas = "images/inventoryimages/pighead.xml"
 
-AddPrefabPostInit("pighead", 
+AddPrefabPostInit("pighead",
     function(inst)
         inst.components.lootdropper:SetLoot({"pigskin", "twigs"}) --add on top of existing loot drop
     end
@@ -259,38 +252,20 @@ if _S.CHARACTERS.WORTOX == nil then _S.CHARACTERS.WORTOX = { DESCRIBE = {},} end
 if _S.CHARACTERS.WURT == nil then _S.CHARACTERS.WURT = { DESCRIBE = {},} end -- DST
 
 --Mermhouse
-if IsDLCEnabled and ( IsDLCEnabled(2) or IsDLCEnabled(3) ) then
-    _S.NAMES.MERMHOUSE = "Merm Hut" 
-end
-_S.NAMES.MERMHOUSE = "Mermhouse" 
-
+_S.NAMES.MERMHOUSE = "Mermhouse"
 _S.RECIPE_DESC.MERMHOUSE = "A crowded domicile for mermaid men."
 
---Fishermerm's Hut
+_S.CHARACTERS.WINONA.DESCRIBE.MERMHOUSE          = {"I could disassemble that."}
+_S.CHARACTERS.WORTOX.DESCRIBE.MERMHOUSE          = {"A stinky structure, to be sure."}
+_S.CHARACTERS.WURT.DESCRIBE.MERMHOUSE            = {"Home is where the swamp is, flort."}
 
+--Fishermerm's Hut
 _S.NAMES.MERMHOUSE_FISHER = "Fishermerm's Hut"
 _S.RECIPE_DESC.MERMHOUSE_FISHER = "A dwelling for fish mongers."
 
-_S.CHARACTERS.GENERIC.DESCRIBE.MERMHOUSE_FISHER         = {"Who would live here?"}
-_S.CHARACTERS.WAGSTAFF.DESCRIBE.MERMHOUSE_FISHER        = {"What are they getting up to in there?"}
-_S.CHARACTERS.WALANI.DESCRIBE.MERMHOUSE_FISHER          = {"I could have sworn this was an outhouse."}
-_S.CHARACTERS.WARLY.DESCRIBE.MERMHOUSE_FISHER           = {"Fisherfolk live here. I can smell it."}
-_S.CHARACTERS.WATHGRITHR.DESCRIBE.MERMHOUSE_FISHER      = {"Is this dwelling made öf fish?"}
-_S.CHARACTERS.WAXWELL.DESCRIBE.MERMHOUSE_FISHER         = {"They copied the pigs, but they're even less intelligent."}
-_S.CHARACTERS.WEBBER.DESCRIBE.MERMHOUSE_FISHER          = {"Smells fishy."}
-_S.CHARACTERS.WENDY.DESCRIBE.MERMHOUSE_FISHER           = {"Time has broken it down."}
-_S.CHARACTERS.WHEELER.DESCRIBE.MERMHOUSE_FISHER         = {"Nice house. Could do with some air freshener though."}
-_S.CHARACTERS.WILBA.DESCRIBE.MERMHOUSE_FISHER           = {"MERMAID MAN ABODES"}
-_S.CHARACTERS.WICKERBOTTOM.DESCRIBE.MERMHOUSE_FISHER    = {"Obviously dilapidated."}
-_S.CHARACTERS.WILLOW.DESCRIBE.MERMHOUSE_FISHER          = {"No one would care if this burned down."}
-_S.CHARACTERS.WINONA.DESCRIBE.MERMHOUSE_FISHER          = {"I could disassemble that."}
-_S.CHARACTERS.WOLFGANG.DESCRIBE.MERMHOUSE_FISHER        = {"The house was not strong enough."}
-_S.CHARACTERS.WOODIE.DESCRIBE.MERMHOUSE_FISHER          = {"They're not the handiest."}
-_S.CHARACTERS.WOODLEGS.DESCRIBE.MERMHOUSE_FISHER        = {"I don't trust 'em."}
-_S.CHARACTERS.WORMWOOD.DESCRIBE.MERMHOUSE_FISHER        = {"Glub Glub Man home"}
-_S.CHARACTERS.WORTOX.DESCRIBE.MERMHOUSE_FISHER          = {"A stinky structure, to be sure."}
-_S.CHARACTERS.WURT.DESCRIBE.MERMHOUSE_FISHER            = {"Home is where the swamp is, flort."}
-_S.CHARACTERS.WX78.DESCRIBE.MERMHOUSE_FISHER            = {"OUTDATED ABODE"}
+_S.CHARACTERS.WINONA.DESCRIBE.MERMHOUSE_FISHER   = {"More to be disassembled."}
+_S.CHARACTERS.WORTOX.DESCRIBE.MERMHOUSE_FISHER   = {"Another smelly, stinky structure."}
+_S.CHARACTERS.WURT.DESCRIBE.MERMHOUSE_FISHER     = {"Fishing is what merms do, flort."}
 
 --Craftsmerm House
 
@@ -355,23 +330,19 @@ _S.CHARACTERS.WORTOX.DESCRIBE.MERMWATCHTOWER        = {"Guards with no king, lik
 _S.CHARACTERS.WURT.DESCRIBE.MERMWATCHTOWER          = {"Royal guard need King to protect..."}
 _S.CHARACTERS.WX78.DESCRIBE.MERMWATCHTOWER          = {"STATUS: INACTIVE"}
 
---Merm Head and Pig Head
+--Merm Head
 _S.NAMES.MERMHEAD = "Merm Head"
 _S.RECIPE_DESC.MERMHEAD = "A rotten head of a warrior."
 
-_S.CHARACTERS.WINONA.DESCRIBE.MERMHEAD  = {  GENERIC = "I'd better hammer down that eyesore.",
-                                            BURNT = "Hooboy, that's a powerful stench." }
-_S.CHARACTERS.WORTOX.DESCRIBE.MERMHEAD  = {  GENERIC = "Yuck.",
-                                            BURNT = "Goodbye, revolting pighead." }
-_S.CHARACTERS.WURT.DESCRIBE.MERMHEAD    =   {  GENERIC = "Who do such thing...",
-                                            BURNT = "Glurp..." }
+_S.CHARACTERS.WINONA.DESCRIBE.MERMHEAD  = { GENERIC = "I'd better hammer down that eyesore.", BURNT = "Hooboy, that's a powerful stench." }
+_S.CHARACTERS.WORTOX.DESCRIBE.MERMHEAD  = { GENERIC = "Yuck.", BURNT = "Goodbye, revolting pighead." }
+_S.CHARACTERS.WURT.DESCRIBE.MERMHEAD    = { GENERIC = "Who do such thing...", BURNT = "Glurp..." }
 
+--Pig Head
 _S.NAMES.PIGHEAD = "Pig Head"
 _S.RECIPE_DESC.PIGHEAD = "Looks intact but rotten inside."
 
-_S.CHARACTERS.WINONA.DESCRIBE.PIGHEAD   =  {  GENERIC = "I should hammer down that eyesore.",
-                                            BURNT = "What a waste of materials." }
-_S.CHARACTERS.WORTOX.DESCRIBE.PIGHEAD   =  {  GENERIC = "I guess there are more distasteful things than soul consumption.",
-                                            BURNT = "So long, repulsive head." }
-_S.CHARACTERS.WURT.DESCRIBE.PIGHEAD     =    {  GENERIC = "Ha ha!",
-                                            BURNT = "Crispy Pig!"  }
+_S.CHARACTERS.WINONA.DESCRIBE.PIGHEAD   =  { GENERIC = "I should hammer down that eyesore.", BURNT = "What a waste of materials." }
+_S.CHARACTERS.WORTOX.DESCRIBE.PIGHEAD   =  { GENERIC = "I guess there are more distasteful things than soul consumption.", BURNT = "So long, repulsive head." }
+_S.CHARACTERS.WURT.DESCRIBE.PIGHEAD     =  { GENERIC = "Ha ha!", BURNT = "Crispy Pig!" }
+

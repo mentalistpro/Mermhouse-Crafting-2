@@ -1,20 +1,18 @@
 name                        = "Mermhouse Crafting"
 author                      = "Alberto Pietralunga & mentalistpro"
-version                     = "2.2.6"
+version                     = "2.3"
 description                 = "Crafting merm house structures."
 forumthread                 = ""
 api_version                 = 6
 priorty                     = 0     --load before Clever Disguise
-
 dont_starve_compatible      = true
 reign_of_giants_compatible  = true
 shipwrecked_compatible      = true
 hamlet_compatible           = true
-
 icon_atlas                  = "modicon.xml"
 icon                        = "modicon.tex"
 
---tweak config behaviours (not implemented)
+--tweak config behaviours (not implemented yet)
 local function simpleopt(x)
     return {description = x, data = x}
 end
@@ -41,13 +39,23 @@ end
 --config
 configuration_options = {
     {
-    name = "icon", 
+    name = "on_marsh",
+    label = "Built on marsh",
+    options = {
+              {description = "YES", data = 0},
+              {description = "NO", data = 1},
+              },
+    default = 0
+    },
+
+    {
+    name = "minimap_icon",
     label = "Minimap icon",
     options = {
-              {description = "OFF", data = 0},
-              {description = "ON", data = 1},
+              {description = "YES", data = 0},
+              {description = "NO", data = 1},
               },
-    default = 1
+    default = 0
     },
 }
 

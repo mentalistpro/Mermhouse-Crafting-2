@@ -1,4 +1,4 @@
-local assets = 
+local assets =
 {
     Asset("ANIM", "anim/mermhouse.zip"),
     Asset("ANIM", "anim/mermhouse_tropical.zip"),
@@ -28,7 +28,7 @@ local loot =
     "fish"
 }
 
-local sw_loot = 
+local sw_loot =
 {
     "boards",
     "rocks",
@@ -44,7 +44,7 @@ local crafted_loot =
     "fish"
 }
 
-local crafted_sw_loot = 
+local crafted_sw_loot =
 {
     "boards",
     "boards",
@@ -53,7 +53,7 @@ local crafted_sw_loot =
     "tropical_fish"
 }
 
-local tower_loot = 
+local tower_loot =
 {
     "boards",
     "boards",
@@ -80,10 +80,10 @@ local tower_loot =
 
 local function onbuilt(inst)
     if GetPlayer():HasTag("mermbuilder") then
-        if GetPlayer().mermbuilderfn then 
+        if GetPlayer().mermbuilderfn then
             GetPlayer().mermbuilderfn(GetPlayer())
         end
-    end 
+    end
 end
 
 local function onhammered(inst, worker)
@@ -145,7 +145,7 @@ local function OnSpawned(inst, child)
     end
 end
 
-local function OnGoHome(inst, child) 
+local function OnGoHome(inst, child)
     if not inst:HasTag("burnt") then
         inst.SoundEmitter:PlaySound("dontstarve/common/pighouse_door")
         if inst.components.childspawner and inst.components.childspawner:CountChildrenOutside() < 1 then
@@ -177,29 +177,29 @@ local function MakeMermHouse(name, postinit)
         inst.entity:AddSoundEmitter()
 
         MakeObstaclePhysics(inst, 1)
-        
+
         inst:AddTag("mermhouse")
         inst:AddTag("structure")
-    
+
         inst:AddComponent("childspawner")
         inst.components.childspawner:SetSpawnedFn(OnSpawned)
         inst.components.childspawner:SetGoHomeFn(OnGoHome)
-        inst:ListenForEvent("dusktime", 
-            function() 
+        inst:ListenForEvent("dusktime",
+            function()
                 if not inst:HasTag("burnt") then
                     if GetSeasonManager() and not GetSeasonManager():IsWinter() then
                         inst.components.childspawner:ReleaseAllChildren()
                     end
                     StartSpawning(inst)
                 end
-            end, 
+            end,
         GetWorld())
         inst:ListenForEvent("daytime", function() StopSpawning(inst) end , GetWorld())
         StartSpawning(inst)
-        
+
         inst:AddComponent("inspectable")
         inst:AddComponent("lootdropper")
-        
+
         inst:AddComponent("workable")
         inst.components.workable:SetWorkAction(ACTIONS.HAMMER)
         inst.components.workable:SetOnFinishCallback(onhammered)
@@ -209,18 +209,18 @@ local function MakeMermHouse(name, postinit)
         MakeLargePropagator(inst)
         inst:ListenForEvent("onignite", onignite)
         inst:ListenForEvent("burntup", onburntup)
-        inst:ListenForEvent("onbuilt", onbuilt)    
+        inst:ListenForEvent("onbuilt", onbuilt)
 
 
-        MakeSnowCovered(inst, .01)      
-        
+        MakeSnowCovered(inst, .01)
+
         inst.OnSave = onsave
         inst.OnLoad = onload
-        
+
         if postinit ~= nil then
             postinit(inst)
         end
-        
+
         return inst
     end
 
@@ -237,8 +237,8 @@ local function mermhouse_postinit(inst)
         if TUNING.MERMHOUSE_MINIMAP_ICON == 1 then
             minimap:SetIcon( "mermhouse_tropical.tex" )
         end
-        inst.AnimState:SetBank("mermhouse_tropical")
-        inst.AnimState:SetBuild("mermhouse_tropical")
+        inst.AnimState:SetBank("merm_sw_house")
+        inst.AnimState:SetBuild("merm_sw_house_2")
         inst.AnimState:PlayAnimation("idle")
     else
         if TUNING.MERMHOUSE_MINIMAP_ICON == 1 then
@@ -246,21 +246,21 @@ local function mermhouse_postinit(inst)
         end
         inst.MiniMapEntity:SetIcon("mermhouse.tex")
         inst.AnimState:SetBank("merm_house")
-        inst.AnimState:SetBuild("merm_house")
+        inst.AnimState:SetBuild("merm_house_2")
         inst.AnimState:PlayAnimation("idle")
     end
-            
+
     inst.components.childspawner.childname = "merm"
     inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 4)
     inst.components.childspawner:SetSpawnPeriod(10)
     inst.components.childspawner:SetMaxChildren(4)
-    
+
     if SaveGameIndex and SaveGameIndex:IsModeShipwrecked() then
         inst.components.lootdropper:SetLoot(sw_loot)
     else
         inst.components.lootdropper:SetLoot(loot)
-    end 
-    
+    end
+
     inst.components.workable:SetWorkLeft(2)
 end
 
@@ -273,8 +273,8 @@ local function mermhouse_fisher_postinit(inst)
     if TUNING.MERMHOUSE_MINIMAP_ICON == 1 then
         minimap:SetIcon( "mermhouse_fisher.tex" )
     end
-    inst.AnimState:SetBank("mermhouse_fisher")
-    inst.AnimState:SetBuild("mermhouse_fisher")
+    inst.AnimState:SetBank("merm_fisherman_house")
+    inst.AnimState:SetBuild("merm_fisherman_house_2")
     inst.AnimState:PlayAnimation("idle")
 
     if IsDLCEnabled(2) or IsDLCEnabled(3) then
@@ -282,7 +282,7 @@ local function mermhouse_fisher_postinit(inst)
     else
         inst.components.childspawner.childname = "merm"
     end
-    inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 4) 
+    inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 4)
     inst.components.childspawner:SetSpawnPeriod(10)
     inst.components.childspawner:SetMaxChildren(2)
 
@@ -304,11 +304,11 @@ local function mermhouse_crafted_postinit(inst)
 
     if TUNING.MERMHOUSE_MINIMAP_ICON == 1 then
         minimap:SetIcon( "mermhouse_crafted.tex" )
-    end    
+    end
     inst.AnimState:SetBank("mermhouse_crafted")
-    inst.AnimState:SetBuild("mermhouse_crafted")
+    inst.AnimState:SetBuild("mermhouse_crafted_2")
     inst.AnimState:PlayAnimation("idle", true)
-   
+
     inst.components.childspawner.childname = "merm"
     inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 2)
     inst.components.childspawner:SetSpawnPeriod(10)
@@ -318,7 +318,7 @@ local function mermhouse_crafted_postinit(inst)
         inst.components.lootdropper:SetLoot(crafted_sw_loot)
     else
         inst.components.lootdropper:SetLoot(crafted_loot)
-    end 
+    end
 
     inst.components.workable:SetWorkLeft(4)
 end
@@ -331,7 +331,7 @@ local function mermhouse_crafted_fisher_postinit(inst)
 
     if TUNING.MERMHOUSE_MINIMAP_ICON == 1 then
         minimap:SetIcon( "mermhouse_crafted_fisher.tex" )
-    end    
+    end
     inst.AnimState:SetBank("mermhouse_crafted_fisher")
     inst.AnimState:SetBuild("mermhouse_crafted_fisher")
     inst.AnimState:PlayAnimation("idle")
@@ -344,7 +344,7 @@ local function mermhouse_crafted_fisher_postinit(inst)
     inst.components.childspawner:SetRegenPeriod(TUNING.TOTAL_DAY_TIME * 2)
     inst.components.childspawner:SetSpawnPeriod(10)
     inst.components.childspawner:SetMaxChildren(1)
-    
+
     if SaveGameIndex and SaveGameIndex:IsModeShipwrecked() then
         inst.components.lootdropper:SetLoot(crafted_sw_loot)
     else
@@ -362,9 +362,9 @@ local function mermwatchtower_postinit(inst)
 
     if TUNING.MERMHOUSE_MINIMAP_ICON == 1 then
         minimap:SetIcon( "mermwatchtower.tex" )
-    end    
+    end
     inst.AnimState:SetBank("merm_guard_tower")
-    inst.AnimState:SetBuild("mermwatchtower")
+    inst.AnimState:SetBuild("merm_guard_tower_2")
     inst.AnimState:PlayAnimation("idle")
 
     inst.components.childspawner.childname = "merm"
@@ -373,7 +373,7 @@ local function mermwatchtower_postinit(inst)
     inst.components.childspawner:SetMaxChildren(1)
 
     inst.components.lootdropper:SetLoot(tower_loot)
-    
+
     inst.components.workable:SetWorkLeft(4)
 end
 
@@ -385,11 +385,10 @@ return  MakeMermHouse("mermhouse", mermhouse_postinit),
         MakeMermHouse("mermhouse_crafted", mermhouse_crafted_postinit),
         MakeMermHouse("mermhouse_crafted_fisher", mermhouse_crafted_fisher_postinit),
         MakeMermHouse("mermwatchtower", mermwatchtower_postinit),
-        
-        MakePlacer("mermhouse_placer", "merm_house", "merm_house", "idle"),
-        MakePlacer("mermhouse_tropical_placer", "mermhouse_tropical", "mermhouse_tropical", "idle"),
-        MakePlacer("mermhouse_fisher_placer", "mermhouse_fisher", "mermhouse_fisher", "idle"),
-        MakePlacer("mermhouse_crafted_placer", "mermhouse_crafted", "mermhouse_crafted", "idle"),
-        MakePlacer("mermhouse_crafted_fisher_placer", "mermhouse_crafted_fisher", "mermhouse_crafted_fisher", "idle"),
-        MakePlacer("mermwatchtower_placer", "merm_guard_tower", "mermwatchtower", "idle")
-        
+
+        MakePlacer("mermhouse_placer", "merm_house", "merm_house_2", "idle"),
+        MakePlacer("mermhouse_tropical_placer", "merm_sw_house", "merm_sw_house_2", "idle"),
+        MakePlacer("mermhouse_fisher_placer", "merm_fisherman_house", "merm_fisherman_house_2", "idle"),
+        MakePlacer("mermhouse_crafted_placer", "mermhouse_crafted_fisher", "mermhouse_crafted_fisher", "idle"),
+        MakePlacer("mermhouse_crafted_fisher_placer", "mermhouse_crafted", "mermhouse_crafted_3", "idle"),
+        MakePlacer("mermwatchtower_placer", "merm_guard_tower", "merm_guard_tower_2", "idle")

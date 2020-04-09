@@ -1,1 +1,0 @@
-return  MakePlacer("pighead_placer", "pig_head", "pig_head", "idle_asleep")
