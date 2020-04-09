@@ -233,6 +233,26 @@ AddPrefabPostInit("pighead",
     end
 )
 
+--Marsh turf
+local turf_marsh = Recipe(
+    "turf_marsh",
+    {
+        Ingredient("cutreeds", 1),
+        Ingredient("spoiled_food", 2),
+    },
+    RECIPETABS.TOWN, TECH.SCIENCE_TWO)
+
+--Tidal marsh turf
+if IsDLCEnabled and ( IsDLCEnabled(2) or IsDLCEnabled(3) ) then
+    local turf_tidalmarsh = Recipe(
+        "turf_tidalmarsh",
+        {
+            Ingredient("cutreeds", 1),
+            Ingredient("spoiled_food", 2),
+        },
+        RECIPETABS.TOWN, TECH.SCIENCE_TWO, "common")
+end
+
 ----------------------------------------------------------------------------------------------------------------------------
 --#3 Strings
 
@@ -345,4 +365,20 @@ _S.RECIPE_DESC.PIGHEAD = "Looks intact but rotten inside."
 _S.CHARACTERS.WINONA.DESCRIBE.PIGHEAD   =  { GENERIC = "I should hammer down that eyesore.", BURNT = "What a waste of materials." }
 _S.CHARACTERS.WORTOX.DESCRIBE.PIGHEAD   =  { GENERIC = "I guess there are more distasteful things than soul consumption.", BURNT = "So long, repulsive head." }
 _S.CHARACTERS.WURT.DESCRIBE.PIGHEAD     =  { GENERIC = "Ha ha!", BURNT = "Crispy Pig!" }
+
+--Marsh turf
+_S.NAMES.TURF_MARSH = "Marsh Turf"
+_S.RECIPE_DESC.TURF_MARSH = "Home is where the swamp is."
+
+_S.CHARACTERS.WINONA.DESCRIBE.TURF_MARSH = {"That's a chunk of squishy ground."}
+_S.CHARACTERS.WORTOX.DESCRIBE.TURF_MARSH = {"Floor or ceiling, depending on your perspective."}
+_S.CHARACTERS.WURT.DESCRIBE.TURF_MARSH = {"Ground bit."}
+
+--Tidal marsh turf
+_S.NAMES.TURF_TIDALMARSH = "Tidal Marsh Turf"
+_S.RECIPE_DESC.TURF_TIDALMARSH = "Tides were where home was used to be."
+
+_S.CHARACTERS.WINONA.DESCRIBE.TURF_TIDALMARSH = {"That's more squishy than the previous one."}
+_S.CHARACTERS.WORTOX.DESCRIBE.TURF_TIDALMARSH = {"Sea or ground, depending on your perspective."}
+_S.CHARACTERS.WURT.DESCRIBE.TURF_TIDALMARSH = {"Sea bit."}
 
