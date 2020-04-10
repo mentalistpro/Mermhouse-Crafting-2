@@ -68,7 +68,11 @@ if TUNING.MERMHOUSE_ONLY_ON_MARSH == 0 then
         local CanBuildAtPoint_old = self.CanBuildAtPoint
         self.CanBuildAtPoint = function(self, pt, recipe)
 
-            if recipe.name == "mermhouse_crafted" then
+            if recipe.name == "mermhouse" or
+               recipe.name == "mermhouse_fisher" or
+               recipe.name == "mermhouse_crafted" or
+               recipe.name == "mermhouse_crafted_fisher" or
+               recipe.name == "mermwatchtower" then
                 local tile = GetWorld().Map:GetTileAtPoint(pt:Get())
                 if tile == GROUND.MARSH or tile == GROUND.TIDALMARSH then
                     return true
