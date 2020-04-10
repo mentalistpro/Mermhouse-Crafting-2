@@ -38,7 +38,7 @@ AddMinimapAtlas("minimap/mermwatchtower.xml")
 ------------------------------------------------------------------------------------------------------------------------------
 --#1 Config
 
-TUNING.MERMHOUSE_ONLY_ON_MARSH = GetModConfigData("on_marsh")
+TUNING.MERMHOUSE_BUILD_ON_MARSH = GetModConfigData("marsh_only")
 TUNING.MERMHOUSE_MINIMAP_ICON = GetModConfigData("minimap_icon")
 --TUNING.MERMHOUSE_FISH_NUMBER = GetModConfigData("fish")
 
@@ -63,11 +63,10 @@ local GetWorld = _G.GetWorld
 local GROUND = _G.GROUND
 
 --Build on marsh only
-if TUNING.MERMHOUSE_ONLY_ON_MARSH == 0 then
+if TUNING.MERMHOUSE_BUILD_ON_MARSH == 0 then
     AddComponentPostInit("builder", function(self, inst)
         local CanBuildAtPoint_old = self.CanBuildAtPoint
         self.CanBuildAtPoint = function(self, pt, recipe)
-
             if recipe.name == "mermhouse" or
                recipe.name == "mermhouse_fisher" or
                recipe.name == "mermhouse_crafted" or

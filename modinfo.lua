@@ -39,8 +39,8 @@ end
 --Configurables
 configuration_options = {
     {
-    name = "on_marsh",
-    label = "Only on marsh",
+    name = "marsh_only",
+    label = "Build on marsh only",
     options = {
               {description = "YES", data = 0},
               {description = "NO", data = 1},
