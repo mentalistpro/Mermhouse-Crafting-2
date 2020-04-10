@@ -397,6 +397,6 @@ return  MakeMermHouse("mermhouse", mermhouse_postinit),
         MakePlacer("mermhouse_placer", "merm_house", "merm_house_2", "idle"),
         MakePlacer("mermhouse_tropical_placer", "merm_sw_house", "merm_sw_house_2", "idle"),
         MakePlacer("mermhouse_fisher_placer", "merm_fisherman_house", "merm_fisherman_house_2", "idle"),
-        MakePlacer("mermhouse_crafted_placer", "mermhouse_crafted_fisher", "mermhouse_crafted_fisher", "idle"),
-        MakePlacer("mermhouse_crafted_fisher_placer", "mermhouse_crafted", "mermhouse_crafted_3", "idle"),
+        MakePlacer("mermhouse_crafted_placer", "mermhouse_crafted", "mermhouse_crafted_2", "idle"),
+        MakePlacer("mermhouse_crafted_fisher_placer", "mermhouse_crafted_fisher", "mermhouse_crafted_fisher", "idle"),
         MakePlacer("mermwatchtower_placer", "merm_guard_tower", "merm_guard_tower_2", "idle")
