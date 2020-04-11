@@ -40,7 +40,7 @@ end
 configuration_options = {
     {
     name = "marsh_only",
-    label = "Build on marsh only",
+    label = "Marsh ground",
     options = {
               {description = "YES", data = 0},
               {description = "NO", data = 1},
